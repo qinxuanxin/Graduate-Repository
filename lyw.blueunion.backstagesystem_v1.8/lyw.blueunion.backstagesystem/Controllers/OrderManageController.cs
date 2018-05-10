@@ -301,6 +301,7 @@ namespace lyw.blueunion.backstagesystem.Controllers
            public ActionResult AddInstrumentShareListData()
            {
                string responseText = "";
+               responseText = "火炬";
                return Content(responseText);
            }
     }
