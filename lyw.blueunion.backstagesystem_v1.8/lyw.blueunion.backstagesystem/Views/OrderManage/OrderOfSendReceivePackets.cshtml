@@ -1,0 +1,440 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>电子联盟后台管理系统</title>
+    <link href="~/img/unionlogo.jpg" rel="shortcut icon" type="image/x-icon" />
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.staticfile.org/font-awesome/4.4.0/css/font-awesome.css?v=4.4.0" rel="stylesheet">
+
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/plugins/toast/animate.css" rel="stylesheet" />
+    <link href="~/css/plugins/toast/toast.css" rel="stylesheet" />
+    <link href="@Url.Content("~/css/plugins/iCheck/custom.css")" rel="stylesheet" />
+    <link href="~/css/style.min.css?v=4.1.0" rel="stylesheet" />
+    <link href="~/css/plugins/jqgrid/ui.jqgrid.css?0820" rel="stylesheet" />
+    <style>
+         .middle-style {
+         
+    position: absolute;
+  width:100%;
+  height:100%;
+    background-color: white;
+  
+    z-index: 1000;
+            
+        }
+       .middle-style .sk-spinner {
+           
+           position: absolute;
+        
+            left: 50%;
+            top: 50%;
+         
+        }
+    </style>
+
+</head>
+
+<body class="gray-bg">
+    <div class="spiner-example middle-style" style="opacity: 0.8; z-index: 1000;">
+        <div class="sk-spinner sk-spinner-wave">
+            <div class="sk-rect1"></div>
+            <div class="sk-rect2"></div>
+            <div class="sk-rect3"></div>
+            <div class="sk-rect4"></div>
+            <div class="sk-rect5"></div>
+        </div>
+    </div>
+    <div class="wrapper wrapper-content toastdiv">
+        <div class="row">
+            @*左侧视图*@
+            <div class="col-sm-3">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content mailbox-content" style="background-color:white">
+                        <div class="file-manager">
+                            <a class="btn btn-block btn-primary compose-mail">任务操作</a>
+                            <div class="space-25"></div>
+                            <h5>任务状态</h5>
+                            <ul class="category-list" style="padding: 0">
+                                <li>
+                                    <a href="mail_compose.html#">
+                                        <i class="fa fa-circle text-muted"></i> 未接包
+                                        <span class="label label-default pull-right task-unconfirmed">16</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="mail_compose.html#">
+                                        <i class="fa fa-circle text-danger"></i>竞标中
+                                        <span class="label label-danger pull-right task-bidin">16</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="mail_compose.html#">
+                                        <i class="fa fa-circle text-navy"></i>已选中
+                                        <span class="label label-primary pull-right task-bided">16</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="mail_compose.html#">
+                                        <i class="fa fa-circle text-info"></i> 托管中
+                                        <span class="label label-warning pull-right task-deposit">16</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="mail_compose.html#">
+                                        <i class="fa fa-circle text-primary"></i> 已完成
+                                        <span class="label label-success pull-right task-finished">16</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+
+
+
+
+
+
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @*左侧视图*@
+
+            @*右侧视图*@
+            <div class="col-sm-9 animated fadeInRight">
+
+
+
+                @*详细任务信息*@
+
+                <div class="mail-box-header task-detail" style="display:none">
+                    <div class="pull-right tooltip-demo">
+                        <a class="btn btn-white btn-sm taskstatustext" data-toggle="tooltip" data-placement="top" title="标为垃圾邮件">
+                            任务状态：
+                        </a>
+                        <a class="btn btn-white btn-sm bidnum" data-toggle="tooltip" data-placement="top" title="回复">
+                            竞标人数：
+                        </a>
+                        <a class="btn btn-white btn-sm price" data-toggle="tooltip" data-placement="top" title="打印邮件">
+                            报价：
+                        </a>
+
+                        <a class="btn btn-white btn-sm sendphone" data-toggle="tooltip" data-placement="top" title="标为垃圾邮件">
+                            手机号：
+                        </a>
+                    </div>
+                    <h2>
+                        查看详细任务信息
+                    </h2>
+                    <div class="mail-tools tooltip-demo m-t-md">
+
+
+                        <h5>
+                            <span class="pull-right font-noraml senduser">发包用户：</span> <span class="font-noraml taskname">任务名称：</span>
+                        </h5>
+                        <h5>
+                            <span class="pull-right font-noraml usefield">应用领域：</span> <span class="font-noraml tecclass">技术分类：</span>
+                        </h5>
+                        <h5>
+                            <span class="pull-right font-noraml deadline">截止时间：</span> <span class="font-noraml sendtime">发布时间： </span>
+                        </h5>
+
+                    </div>
+                </div>
+                <div class="mail-box task-detail" style="display:none">
+
+
+                    <div class="mail-body">
+                        <h4>需求详情：</h4>
+                        <p class="demanddetail">
+
+                        </p>
+
+
+                    </div>
+                    <div class="mail-body">
+                        <h4>需求描述：</h4>
+                        <p class="demanddescribe">
+
+                        </p>
+
+
+                    </div>
+
+                    <div class="mail-attachment row bidinfoin" style="display:none">
+
+
+
+                    </div>
+
+                    <div class="mail-attachment row bidinfosuccess" style="display:none">
+
+
+
+                    </div>
+                    <div class="bidauditor col-sm-11" style="display:none">
+
+                    </div>
+                    <div class="depositauditor col-sm-11" style="display:none">
+
+                    </div>
+                    <div class="mail-body text-right tooltip-demo">
+                        <a class="btn btn-sm btn-white backprepage"><i class="fa fa-reply"></i> 返回</a>
+                        @*<a class="btn btn-sm btn-white" href="mail_compose.html"><i class="fa fa-arrow-right"></i> 下一封</a>
+                            <button title="" data-placement="top" data-toggle="tooltip" type="button" data-original-title="打印这封邮件" class="btn btn-sm btn-white">
+                                <i class="fa fa-print"></i> 打印
+                            </button>
+                            <button title="" data-placement="top" data-toggle="tooltip" data-original-title="删除邮件" class="btn btn-sm btn-white">
+                                <i class="fa fa-trash-o"></i> 删除
+                            </button>*@
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+
+
+                @*详细任务信息*@
+
+
+
+
+
+                @*基础查询信息*@
+                <div class="mail-box-header basictaskinfo">
+                    <div class="form-group">
+
+                        <form role="form" class="form-inline">
+                            <div class="form-group" style="margin-right:10px">
+                                <input type="text" style="width:150px" placeholder="请输入任务编号" class="form-control" id="task_num" name="task_num">
+                            </div>
+                            <div class="form-group" style="margin-right:10px">
+                                <input type="text" style="width:150px" placeholder="请输入发包人手机号" class="form-control" id="task_phone" name="task_phone">
+                            </div>
+
+                            <div class="form-group" style="margin-right:0px">
+                                <label for="regtime_start" class="">发布时间</label>
+                                <input type="date" id="order_regtime_start" name="order_regtime_start" class="form-control">
+                                <label for="regtime_end" class="">至</label>
+                                <input type="date" id="order_regtime_end" name="order_regtime_end" class="form-control">
+                            </div>
+
+                            <hr />
+                            <div class="form-group" style="margin-right:20px">
+                                <select class="form-control" name="task_status" id="task_status">
+                                    <option value="00">请选择任务状态</option>
+                                    <option value="0">未接包</option>
+                                    <option value="1">竞标中</option>
+                                    <option value="2">已选中</option>
+                                    <option value="3">托管中</option>
+                                    <option value="4">已完成</option>
+                                </select>
+                            </div>
+                            <div class="form-group" style="margin-right:20px">
+                                <select class="form-control" name="pay_status" id="pay_status">
+                                    <option value="00">请选择支付状态</option>
+                                    <option value="0">未付款</option>
+                                    <option value="1">已付款</option>
+
+                                </select>
+                            </div>
+                            <div class="form-group" style="margin-right:20px" style="display:none">
+                                <select class="form-control" name="shipping_status" id="shipping_status">
+                                    <option value="00">请选择发货状态</option>
+                                    <option value="0">未发货</option>
+                                    <option value="1">已发货</option>
+                                    <option value="2">已收货</option>
+                                    <option value="3">已退货</option>
+                                </select>
+                            </div>
+                        </form>
+
+                        @*<div class="row">
+                                <div class="col-sm-4">
+                                    <input type="text" placeholder="请输入任务编号" class="form-control" id="task_num" name="task_num">
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <input type="date" placeholder="请选择发布时间" class="form-control" id="task_releasetime" name="task_releasetime">
+                                </div>
+                                <div class="col-sm-4" >
+                                    <input type="text" placeholder="请输入发包人手机号" class="form-control" id="task_phone" name="task_phone">
+                                </div>
+                            </div>*@
+                        @*<hr />
+                            <div class="row">
+
+                                <div class="col-sm-4">
+
+                                    <select class="form-control" name="task_status" id="task_status">
+                                        <option value="00">请选择任务状态</option>
+                                        <option value="0">未接包</option>
+                                        <option value="1">竞标中</option>
+                                        <option value="2">已选中</option>
+                                        <option value="3">托管中</option>
+                                        <option value="4">已完成</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-4" style="display:none">
+
+                                    <select class="form-control" name="pay_status" id="pay_status">
+                                        <option value="00">请选择支付状态</option>
+                                        <option value="0">未付款</option>
+                                        <option value="1">已付款</option>
+
+                                    </select>
+                                </div>
+                                <div class="col-sm-4" style="display:none">
+
+                                    <select class="form-control" name="shipping_status" id="shipping_status">
+                                        <option value="00">请选择发货状态</option>
+                                        <option value="0">未发货</option>
+                                        <option value="1">已发货</option>
+                                        <option value="2">已收货</option>
+                                        <option value="3">已退货</option>
+                                    </select>
+                                </div>
+                            </div>*@
+                    </div>
+
+
+                    <div class="mail-tools tooltip-demo m-t-md">
+                        <div class="btn-group pull-right">
+                            <button class="btn btn-primary search-orderpcb-data" type="button" title="查看满足条件的任务单号">查询</button>
+
+                        </div>
+                        <button class="btn btn-white btn-sm search-taskdetailinfo" data-toggle="tooltip" data-placement="left" title="查看当前选中任务信息">
+                            <i class="fa fa-envelope"></i> 查看
+                        </button>
+                        @* <button class="btn btn-white btn-sm search-pcblogisticsinfo" data-toggle="tooltip" data-placement="left" title="查看物流信息">
+                                <i class="fa fa-refresh"></i> 物流
+                            </button>
+                            <button class="btn btn-white btn-sm send-goods-btn" data-toggle="tooltip"  title="添加至发货列表">
+                                <i class="fa fa-eye"></i> 发货
+                            </button>*@
+                        <div class="modal inmodal" id="sendModel" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content animated bounceInRight">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">
+                                            <span aria-hidden="true">&times;</span><span class="sr-only">关闭</span>
+                                        </button>
+                                        @*<i class="fa fa-laptop modal-icon"></i>*@
+                                        <h4 class="modal-title">填写发货信息</h4>
+                                        @*<small class="font-bold">这里可以显示副标题。*@
+                                    </div>
+                                    <div class="modal-body">
+
+
+                                        <div class="form-group">
+                                            <label>快递公司</label>
+                                            <select class="form-control" name="shipping_status" id="shipping_status">
+                                                <option value="00">请选择快递公司</option>
+                                                <option value="0">圆通快递</option>
+                                                <option value="1">韵达快递</option>
+                                                <option value="3">中通快递</option>
+
+                                                <option value="4">顺丰快递</option>
+                                                <option value="5">天天快递</option>
+
+                                                <option value="6">邮政EMS</option>
+                                                <option value="7">申通快递</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>快递单号</label>
+                                            <input type="text" id="tracknum" placeholder="请输入快递单号" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+                                        <button type="button" class="btn btn-primary save-sendgoods-modal">保存</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @*<button class="btn btn-white btn-sm cancel-goods" data-toggle="tooltip" data-placement="top" title="标为废弃订单">
+                                <i class="fa fa-trash-o"></i>退货
+                            </button>*@
+                        <button class="btn btn-white btn-sm del-thistask" data-toggle="tooltip" data-placement="top" title="标为垃圾订单">
+                            <i class="fa fa-trash-o"></i>删除
+                        </button>
+
+                    </div>
+                </div>
+                @*基础查询信息*@
+
+                @*基础表格信息*@
+                <div class="mail-box basictaskinfo">
+                    <div class="jqGrid_wrapper">
+                        <div class="ui-jqgrid" style="height:350px;overflow-y:scroll">
+
+                            <table id="table_list" class="table table-striped table-condensed table-bordered"></table>
+
+                            <div class="ui-jqgrid-resize-mark" id="rs_mtable_list_2">&nbsp;</div>
+                            <div id="pager_list_2" class="ui-jqgrid-pager" dir="ltr">
+                                <div id="pg_pager_list_2" class="ui-pager-control" role="group">
+                                    <table class="ui-pg-table ui-common-table ui-pager-table">
+                                        <tbody>
+                                            <tr>
+
+
+                                                <td id="pager_list_2_left" align="center" style=" width: 351px;">
+                                                    <table class="ui-pg-table ui-common-table ui-paging-pager">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td id="first_pager_list_2" class="ui-pg-button" title="First Page"><span class="glyphicon glyphicon-step-backward"></span></td>
+                                                                <td id="prev_pager_list_2" class="ui-pg-button" title="Previous Page"><span class="glyphicon glyphicon-backward"></span></td>
+                                                                <td class="ui-pg-button ui-disabled" style="cursor: default;"><span class="ui-separator"></span></td>
+                                                                <td id="input_pager_list_2" dir="ltr"> <input id="pagenowshow" class="ui-pg-input form-control" type="text" size="2" maxlength="7" value="0" role="textbox">  <span id="sp_1_pager_list_2">共0页</span> </td>
+                                                                <td class="ui-pg-button ui-disabled"><span class="ui-separator"></span></td>
+                                                                <td id="next_pager_list_2" class="ui-pg-button" title="Next Page"><span class="glyphicon glyphicon-forward"></span></td>
+                                                                <td id="last_pager_list_2" class="ui-pg-button" title="Last Page"><span class="glyphicon glyphicon-step-forward"></span></td>
+                                                                <td dir="ltr">
+                                                                    <select class="ui-pg-selbox form-control" role="listbox" title="Records per Page">
+                                                                        <option role="option" value="10" selected="selected">10</option>
+                                                                        <option role="option" value="20">20</option>
+                                                                        <option role="option" value="30">30</option>
+                                                                    </select>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+
+                                                <td id="pager_list_2_center" align="center"><div dir="ltr" style="text-align:center" class="ui-paging-info totalnum">共0条</div></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                @*基础表格信息*@
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.staticfile.org/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    @*<script src="~/Scripts/plugins/peity/jquery.peity.min.js"></script>*@
+    <script src="~/Scripts/content.min.js?v=1.0.0"></script>
+    <script src="~/Scripts/plugins/iCheck/icheck.min.js"></script>
+    <script src="~/Scripts/plugins/toast/toast.js"></script>
+    @*<script src="~/Scripts/demo/peity-demo.min.js"></script>*@
+
+
+
+    <script type="text/javascript">var rootUrl = "@Url.Content("~")";//获取根路径，防止iis部署位置不同</script>
+    <script src="@Url.Content("~/Scripts_App/Utilities/Utilities.js")"></script>
+    <script src="@Url.Content("~/Scripts_App/OrderManage/OrderOfSendReceivePackets.js")"></script>
+
+</body>
+
+</html>

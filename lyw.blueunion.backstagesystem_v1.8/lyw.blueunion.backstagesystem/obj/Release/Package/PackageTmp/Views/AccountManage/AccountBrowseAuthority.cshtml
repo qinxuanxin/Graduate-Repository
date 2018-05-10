@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>电子联盟后台管理系统</title>
+
+    <link href="~/img/unionlogo.jpg" rel="shortcut icon" type="image/x-icon" />
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.staticfile.org/font-awesome/4.4.0/css/font-awesome.css?v=4.4.0" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/plugins/toast/animate.css" rel="stylesheet" />
+    <link href="~/css/plugins/toast/toast.css" rel="stylesheet" />
+    <link href="~/css/style.min.css?v=4.1.0" rel="stylesheet">
+    <style>
+        .middle-style {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            z-index: 1000;
+        }
+
+            .middle-style .sk-spinner {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+            }
+    </style>
+</head>
+
+<body class="gray-bg">
+
+    <div class="spiner-example middle-style" style="opacity: 0.8; z-index: 1000;">
+        <div class="sk-spinner sk-spinner-wave">
+            <div class="sk-rect1"></div>
+            <div class="sk-rect2"></div>
+            <div class="sk-rect3"></div>
+            <div class="sk-rect4"></div>
+            <div class="sk-rect5"></div>
+        </div>
+    </div>
+    <div class="wrapper wrapper-content animated fadeInRight toastdiv">
+
+        <div class="row">
+            <div class="col-sm-12">
+
+
+
+
+                @*短信事件*@
+                <div class="ibox event-info">
+                    <div class="ibox-title">
+                        <h5>角色权限</h5>
+                        <div class="ibox-tools">
+                            <a class="btn btn-primary btn-xs new-event-btn"></a>
+                            @*<a href="projects.html" class="btn btn-primary btn-xs">编辑事件</a>*@
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="row m-b-sm m-t-sm">
+                            <div class="col-md-4">
+
+                                @*<button type="button" id="" class="btn btn-white btn-sm">角色</button>*@
+                            </div>
+                            <div class="col-md-8">
+                                @*<div class="input-group">*@
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" style="line-height:2.8">角色名</label>
+
+                                    <div class="col-sm-6">
+                                        <select class="form-control m-b" name="Admin_id" id="adminid">
+
+                                            <option value="2">管理员</option>
+                                            <option value="3">普通用户</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <button type="button" id="" class="btn btn-white btn-sm browse-author">查看</button>
+                                    </div>
+                                </div>
+                                @*</div>*@
+                            </div>
+                        </div>
+                        <div>
+                            <span class="permessage-info"></span>
+                        </div>
+                        <div class="project-list">
+
+                            <table class="table table-hover " id="table_list"></table>
+                        </div>
+                    </div>
+                </div>
+                @*短信事件*@
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+
+    <script src="https://cdn.staticfile.org/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <script src="~/Scripts/plugins/toast/toast.js"></script>
+    <script src="~/Scripts/content.min.js?v=1.0.0"></script>
+    <script type="text/javascript">var rootUrl = "@Url.Content("~")";//获取根路径，防止iis部署位置不同</script>
+    <script src="@Url.Content("~/Scripts_App/Utilities/Utilities.js")"></script>
+
+    <script src="@Url.Content("~/Scripts_App/AccountManage/BrowseAuthority.js")"></script>
+
+
+
+
+
+</body>
+
+</html>

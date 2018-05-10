@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lyw.blueunion.backstagesystem", "lyw.blueunion.backstagesystem\lyw.blueunion.backstagesystem.csproj", "{7E67A463-E123-423B-AE71-F91378E76D67}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lyw.blueunion.backstagesystem.Bll", "lyw.blueunion.backstagesystem.Bll\lyw.blueunion.backstagesystem.Bll.csproj", "{D4DF3F28-DCA6-4E45-B4B5-6F20337C2E46}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lyw.blueunion.backstagesystem.Dal", "lyw.blueunion.backstagesystem.Dal\lyw.blueunion.backstagesystem.Dal.csproj", "{D8197496-3242-4820-BF18-0460F71F0EA6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lyw.blueunion.backstagesystem.Model", "lyw.blueunion.backstagesystem.Model\lyw.blueunion.backstagesystem.Model.csproj", "{A5FC8A9E-6D41-4733-9FDB-25583F5BB018}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lyw.blueunion.backstagesystem.Utilities", "lyw.blueunion.backstagesystem.Utilities\lyw.blueunion.backstagesystem.Utilities.csproj", "{072FB3B7-CBB7-4291-9352-6BC727C066AB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7E67A463-E123-423B-AE71-F91378E76D67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E67A463-E123-423B-AE71-F91378E76D67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E67A463-E123-423B-AE71-F91378E76D67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E67A463-E123-423B-AE71-F91378E76D67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4DF3F28-DCA6-4E45-B4B5-6F20337C2E46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4DF3F28-DCA6-4E45-B4B5-6F20337C2E46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4DF3F28-DCA6-4E45-B4B5-6F20337C2E46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4DF3F28-DCA6-4E45-B4B5-6F20337C2E46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8197496-3242-4820-BF18-0460F71F0EA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8197496-3242-4820-BF18-0460F71F0EA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8197496-3242-4820-BF18-0460F71F0EA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8197496-3242-4820-BF18-0460F71F0EA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5FC8A9E-6D41-4733-9FDB-25583F5BB018}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5FC8A9E-6D41-4733-9FDB-25583F5BB018}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5FC8A9E-6D41-4733-9FDB-25583F5BB018}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5FC8A9E-6D41-4733-9FDB-25583F5BB018}.Release|Any CPU.Build.0 = Release|Any CPU
+		{072FB3B7-CBB7-4291-9352-6BC727C066AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{072FB3B7-CBB7-4291-9352-6BC727C066AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{072FB3B7-CBB7-4291-9352-6BC727C066AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{072FB3B7-CBB7-4291-9352-6BC727C066AB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

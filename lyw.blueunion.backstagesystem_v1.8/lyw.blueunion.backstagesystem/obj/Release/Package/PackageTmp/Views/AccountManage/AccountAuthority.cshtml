@@ -1,0 +1,432 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>电子联盟后台管理系统</title>
+
+
+    <link href="@Url.Content("~/css/bootstrap.min.css?v=3.3.5")" rel="stylesheet" />
+    @*<link href="@Url.Content("~/css/bootstrap-theme.min.css")" rel="Stylesheet" />*@
+    <link href="@Url.Content("~/css/font-awesome.min.css?v=4.4.0")" rel="stylesheet" />
+   
+    <link href="@Url.Content("~/css/style.min.css?v=4.0.0")" rel="stylesheet" />
+    <link href="~/css/plugins/toast/animate.css" rel="stylesheet" />
+    <link href="~/css/plugins/toast/toast.css" rel="stylesheet" />
+    <link href="@Url.Content("~/css/plugins/jasny/jasny-bootstrap.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/css/plugins/iCheck/custom.css")" rel="stylesheet" />
+    <style>
+        .file {
+            position: absolute;
+            top: 0;
+            right: 80px;
+            height: 24px;
+            filter: alpha(opacity:0);
+            opacity: 0;
+            width: 260px;
+        }
+
+        .middle-style {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            z-index: 1000;
+        }
+
+            .middle-style .sk-spinner {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+            }
+    </style>
+
+    <!--[if IE]>
+        <script src="http://libs.useso.com/js/html5shiv/3.7/html5shiv.min.js"></script>
+    <![endif]-->
+    <script src="@Url.Content("~/Scripts/jquery-1.10.2.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.form.js")"></script>
+    <script src="~/Scripts/plugins/toast/toast.js"></script>
+    <script src="~/Scripts/plugins/iCheck/icheck.min.js"></script>
+   
+ 
+</head>
+<body class="gray-bg">
+    <div class="spiner-example middle-style" style="opacity: 0.8; z-index: 1000;">
+        <div class="sk-spinner sk-spinner-wave">
+            <div class="sk-rect1"></div>
+            <div class="sk-rect2"></div>
+            <div class="sk-rect3"></div>
+            <div class="sk-rect4"></div>
+            <div class="sk-rect5"></div>
+        </div>
+    </div>
+
+    <div class="wrapper wrapper-content animated toastdiv">
+
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>
+                            权限编辑
+                        </h5>
+                        <div class="ibox-tools">
+
+                            <a class="close-link">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="form-horizontal">
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">用户名</label>
+
+                                <div class="col-sm-6">
+                                    <select class="form-control m-b" name="Admin_id" id="adminid">
+
+                                        <option value="2">管理员</option>
+                                        <option value="3">普通用户</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="form-group">
+                                <label class="col-sm-12 control-label" style="background-color:#f3f3f4;text-align:center">账号管理
+                                <label class="checkbox-inline i-checks" style="padding-top:0px;margin:0 15px 0 10px"> <input name-id='account' type="checkbox" class="checkbox-click">全选</label>
+                                </label>
+                              
+                             </div>
+                            <div class="form-group">
+                                @*<label class="col-sm-2 control-label">账号管理</label>*@
+
+                                <div class="col-sm-6">
+                                    <label class="checkbox-inline i-checks account">
+                                        <input name='child' type="checkbox" value="5">查询
+                                    </label>
+                                    <label class="checkbox-inline i-checks account">
+                                        <input name='child' type="checkbox" value="2">注册
+                                    </label>
+                                    <label class="checkbox-inline i-checks account">
+                                        <input name='child' type="checkbox" value="3">修改
+                                    </label>
+                                    <label class="checkbox-inline i-checks account">
+                                        <input name='child' type="checkbox" value="4">删除
+                                    </label>
+                                </div>
+                             
+
+                            </div>
+                            <hr />
+                            <div class="form-group">
+                                <label class="col-sm-12 control-label" style="background-color:#f3f3f4;text-align:center">个人资料
+                                    <label class="checkbox-inline i-checks" style="padding-top:0px;margin:0 15px 0 10px"> <input name-id='persondata' type="checkbox" class="checkbox-click">全选</label>
+                                </label>
+                             </div>
+
+                            <div class="form-group">
+                                @*<label class="col-sm-2 control-label">个人资料</label>*@
+
+                                <div class="col-sm-2">
+                                    <label class="checkbox-inline i-checks persondata">
+                                        <input name='child' type="checkbox" value="1">修改密码
+                                    </label>
+
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="form-group">
+                                <label class="col-sm-12 control-label" style="background-color:#f3f3f4;text-align:center">会员管理
+                                    <label class="checkbox-inline i-checks" style="padding-top:0px;margin:0 15px 0 10px"> <input name-id='member' type="checkbox" class="checkbox-click">全选</label>
+                                </label>
+                           
+                             </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">个人会员</label>
+
+                                <div class="col-sm-4">
+                                    <label class="checkbox-inline i-checks member">
+                                        <input name='child' type="checkbox" value="6">查询
+                                    </label>
+                                    <label class="checkbox-inline i-checks member">
+                                        <input name='child' type="checkbox" value="7">删除
+                                    </label>
+
+                                </div>
+                                <label class="col-sm-2 control-label">自由职业</label>
+
+                                <div class="col-sm-4">
+                                    <label class="checkbox-inline i-checks member">
+                                        <input name='child' type="checkbox" value="10">查询
+                                    </label>
+                                    <label class="checkbox-inline i-checks member">
+                                        <input name='child' type="checkbox" value="18">审核
+                                    </label>
+                                    <label class="checkbox-inline i-checks member">
+                                        <input name='child' type="checkbox" value="11">删除
+                                    </label>
+
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">企业会员</label>
+
+                                <div class="col-sm-4">
+                                    <label class="checkbox-inline i-checks member">
+                                        <input name='child' type="checkbox" value="8">查询
+                                    </label>
+                                    <label class="checkbox-inline i-checks member">
+                                        <input name='child' type="checkbox" value="9">删除
+                                    </label>
+
+                                </div>
+                                @*<label class="col-sm-2 control-label">会员单位</label>
+
+                                    <div class="col-sm-4">
+                                        <label class="checkbox-inline i-checks">
+                                            <input type="checkbox" value="option1">查询
+                                        </label>
+                                        <label class="checkbox-inline i-checks">
+                                            <input type="checkbox" value="option2">审核
+                                        </label>
+                                        <label class="checkbox-inline i-checks">
+                                            <input type="checkbox" value="option2">删除
+                                        </label>
+
+                                    </div>*@
+
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">会员统计</label>
+                                <div class="col-sm-4">
+                                    <label class="checkbox-inline i-checks member">
+                                        <input name='child' type="checkbox" value="17">分类统计
+                                    </label>
+                                    <label class="checkbox-inline i-checks member">
+                                        <input name='child' type="checkbox" value="19">会员记录统计
+                                    </label>
+
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="form-group">
+                                <label class="col-sm-12 control-label" style="background-color:#f3f3f4;text-align:center">订单管理
+                                    <label class="checkbox-inline i-checks " style="padding-top:0px;margin:0 15px 0 10px"> <input id="order" name-id='order' type="checkbox" class="checkbox-click">全选</label>
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">自助下单</label>
+
+                                <div class="col-sm-10">
+                                    <label class="checkbox-inline i-checks order">
+                                        <input name='child' type="checkbox" value="12">查询
+                                    </label>
+
+                                    <label class="checkbox-inline i-checks order">
+                                        <input name='child' type="checkbox" value="20">物流
+                                    </label>
+                                    <label class="checkbox-inline i-checks order">
+                                        <input name='child' type="checkbox" value="21">发货
+                                    </label>
+                                    <label class="checkbox-inline i-checks order">
+                                        <input name='child' type="checkbox" value="22">退货
+                                    </label>
+                                    <label class="checkbox-inline i-checks order">
+                                        <input name='child' type="checkbox" value="23">删除
+                                    </label>
+
+                                </div>
+
+
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">共享生产</label>
+
+                                <div class="col-sm-10">
+                                    <label class="checkbox-inline i-checks order">
+                                        <input name='child' type="checkbox" value="13">查询
+                                    </label>
+
+                                    <label class="checkbox-inline i-checks order">
+                                        <input name='child' type="checkbox" value="24">物流
+                                    </label>
+                                    <label class="checkbox-inline i-checks order">
+                                        <input name='child' type="checkbox" value="25">发货
+                                    </label>
+                                    <label class="checkbox-inline i-checks order">
+                                        <input name='child' type="checkbox" value="26">退货
+                                    </label>
+                                    <label class="checkbox-inline i-checks order">
+                                        <input name='child' type="checkbox" value="27">删除
+                                    </label>
+
+                                </div>
+
+
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">设计接包</label>
+
+                                <div class="col-sm-10">
+                                    <label class="checkbox-inline i-checks order">
+                                        <input name='child' type="checkbox" value="14">查询
+                                    </label>
+
+                                    <label class="checkbox-inline i-checks order">
+                                        <input name='child' type="checkbox" value="28">审核
+                                    </label>
+                                    @*<label class="checkbox-inline i-checks order">
+                                        <input name='child' type="checkbox" value="29">审核竞标
+                                    </label>
+                                    <label class="checkbox-inline i-checks order">
+                                        <input name='child' type="checkbox" value="30">审核托管
+                                    </label>*@
+                                    <label class="checkbox-inline i-checks order">
+                                        <input name='child' type="checkbox" value="31">删除
+                                    </label>
+
+                                </div>
+
+
+                            </div>
+                            <hr />
+                         
+                            <div class="form-group">
+                                <label class="col-sm-12 control-label" style="background-color:#f3f3f4;text-align:center">
+                                    图片管理
+                                    <label class="checkbox-inline i-checks " style="padding-top:0px;margin:0 15px 0 10px"> <input id="image" name-id='image' type="checkbox" class="checkbox-click">全选</label>
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">广告管理</label>
+
+                                <div class="col-sm-4">
+                                    <label class="checkbox-inline i-checks image">
+                                        <input name='child' type="checkbox" value="32">查询
+                                    </label>
+                                    <label class="checkbox-inline i-checks image">
+                                        <input name='child' type="checkbox" value="33">添加
+                                    </label>
+                                    <label class="checkbox-inline i-checks image">
+                                        <input name='child' type="checkbox" value="34">设置
+                                    </label>
+
+                                    <label class="checkbox-inline i-checks image">
+                                        <input name='child' type="checkbox" value="35">删除
+                                    </label>
+
+                                </div>
+                                <label class="col-sm-2 control-label">分类管理</label>
+
+                                <div class="col-sm-4">
+                                    <label class="checkbox-inline i-checks image">
+                                        <input name='child' type="checkbox" value="36">查询
+                                    </label>
+                                    <label class="checkbox-inline i-checks image">
+                                        <input name='child' type="checkbox" value="37">添加
+                                    </label>
+
+
+                                    <label class="checkbox-inline i-checks image">
+                                        <input name='child' type="checkbox" value="38">删除
+                                    </label>
+
+                                </div>
+
+                            </div>
+                            <hr />
+                            <div class="form-group">
+                                <label class="col-sm-12 control-label" style="background-color:#f3f3f4;text-align:center">消息管理
+                                    <label class="checkbox-inline i-checks " style="padding-top:0px;margin:0 15px 0 10px"> <input id="news" name-id='news' type="checkbox" class="checkbox-click">全选</label>
+                                </label>
+                          
+                              </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">短信管理</label>
+
+                                <div class="col-sm-10">
+                                    <label class="checkbox-inline i-checks news">
+                                        <input name='child' type="checkbox" value="39">事件搜索
+                                    </label>
+                                    <label class="checkbox-inline i-checks news">
+                                        <input name='child' type="checkbox" value="40">事件开启
+                                    </label>
+                                    <label class="checkbox-inline i-checks news">
+                                        <input name='child' type="checkbox" value="47">新建事件
+                                    </label>
+                                    <label class="checkbox-inline i-checks news">
+                                        <input name='child' type="checkbox" value="41">事件删除
+                                    </label>
+                                    <label class="checkbox-inline i-checks news">
+                                        <input name='child' type="checkbox" value="42">模板搜索
+                                    </label>
+                                    <label class="checkbox-inline i-checks news">
+                                        <input name='child' type="checkbox" value="43">模板编辑
+                                    </label>
+                                    <label class="checkbox-inline i-checks news">
+                                        <input name='child' type="checkbox" value="44">模板新建
+                                    </label>
+                                    <label class="checkbox-inline i-checks news">
+                                        <input name='child' type="checkbox" value="45">模板删除
+                                    </label>
+                                    <label class="checkbox-inline i-checks news">
+                                        <input name='child' type="checkbox" value="46">记录查询
+                                    </label>
+
+                                </div>
+
+
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">操作记录</label>
+
+                                <div class="col-sm-10">
+
+
+                                    <label class="checkbox-inline i-checks news">
+                                        <input name='child' type="checkbox" value="15">日志查询
+                                    </label>
+
+                                </div>
+
+
+                            </div>
+                            <hr />
+                            <span class="hint-message" style="text-align: center;display:block;width:90%;color:red"></span>
+
+
+                            @*<div class="hr-line-dashed"></div>*@
+                            <div class="form-group">
+                                <div class="col-sm-10 col-sm-offset-5">
+                                    <button class="btn btn-primary confirm-author-button" type="button">分配权限</button>
+                                    @*<button class="btn btn-white" type="submit">取消</button>*@
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="@Url.Content("~/Scripts_App/Utilities/Utilities.js")"></script>
+    <script type="text/javascript">var rootUrl = "@Url.Content("~")";//获取根路径，防止iis部署位置不同</script>
+    <script src="@Url.Content("~/Scripts_App/AccountManage/AccountAuthority.js")"></script>
+
+    <script>
+    $(function () {
+        $(".btn-browse").click(function () {
+            $("#fileField").click();
+        });
+        $(".i-checks").iCheck({ checkboxClass: "icheckbox_square-green", radioClass: "iradio_square-green", });
+
+    })
+    </script>
+
+</body>
+</html>

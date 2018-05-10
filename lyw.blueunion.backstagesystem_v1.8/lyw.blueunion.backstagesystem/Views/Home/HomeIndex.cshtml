@@ -1,0 +1,564 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title>电子联盟后台管理系统</title>
+    <link href="~/img/unionlogo.jpg" rel="shortcut icon" type="image/x-icon" />
+ 
+
+    <!--[if lt IE 9]>
+    <meta http-equiv="refresh" content="0;ie.html"/><![endif]-->
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.staticfile.org/font-awesome/4.4.0/css/font-awesome.css?v=4.4.0" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+
+     <link href="~/css/style.min.css?v=4.1.0" rel="stylesheet">
+</head>
+
+<body class="fixed-sidebar full-height-layout gray-bg @*fixed-nav*@" style="overflow:hidden">
+    <div id="wrapper">
+        <!--左侧导航开始-->
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="nav-close">
+                <i class="fa fa-times-circle"></i>
+            </div>
+            <div class="sidebar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li class="nav-header">
+                        <div class="dropdown profile-element">
+                            @*<span><img alt="image" class="img-circle" src=""></span>*@
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <span class="clear">
+                                    <span class="block m-t-xs" id="user-strong"></span>
+                                    <span class="text-muted text-xs block" id="user-rank"></span>
+                                </span>
+                            </a>
+                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                              
+                                <li>
+                                    <a class="" onclick="persondata()" name="@Url.Action("PersonalData", "Home")">个人资料</a>
+                                </li>
+                               
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="@Url.Action("LoginIndex","Login")">安全退出</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="logo-element" style="font-size:13px;">
+                            电子联盟
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-user"></i> <span class="nav-label">管理员管理</span> <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a class="J_menuItem"  name="@Url.Action("accountregister","accountmanage")" data-index="0">账号注册</a>
+                            </li>
+                            <li>
+                                <a class="J_menuItem"  name="@Url.Action("AccountEdit", "accountmanage")">账号编辑</a>
+                            </li>
+                            <li>
+                                <a href="#">权限管理 <span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li>
+                                        <a class="J_menuItem" name="@Url.Action("AccountAuthority", "accountmanage")">权限分配</a>
+                                    </li>
+                                    <li>
+                                        <a class="J_menuItem" name="@Url.Action("AccountBrowseAuthority", "accountmanage")">角色权限</a>
+                                    </li>
+            
+                                </ul>
+
+                            </li>
+                            @*<li>
+                                <a class="J_menuItem" name="@Url.Action("AccountAuthority", "accountmanage")">权限管理</a>
+                            </li>*@
+                        </ul>
+
+                    </li>
+                  
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-user-plus"></i> <span class="nav-label">会员管理</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="#">个人会员 <span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li>
+                                        <a class="J_menuItem" name="@Url.Action("MemberList","MemberManage")">个人会员列表</a>
+                                    </li>
+                                    <li>
+                                        <a class="J_menuItem" name="@Url.Action("MemberListProfessional", "MemberManage")">自由职业列表</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">企业会员 <span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li>
+                                        <a class="J_menuItem" name="@Url.Action("MemberListEnterprise", "MemberManage")">企业会员列表</a>
+                                    </li>
+                                    @*<li>
+                                        <a class="J_menuItem" name="@Url.Action("MemberListUnit", "MemberManage")">会员单位列表</a>
+                                    </li>*@
+                                </ul>
+                              
+                            </li>
+
+                            @*<li>
+                                <a href="#">会员单位 <span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li>
+                                        <a class="J_menuItem" href="@Url.Action("MemberListUnit", "MemberManage")">会员单位列表</a>
+                                    </li>
+
+                                </ul>
+
+                            </li>*@
+                            @*<li>
+                                <a href="#">自由职业 <span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li>
+                                        <a class="J_menuItem" href="@Url.Action("MemberListProfessional", "MemberManage")">自由职业列表</a>
+                                    </li>
+
+                                </ul>
+
+                            </li>*@
+
+                            <li>
+                                <a class="J_menuItem" name="@Url.Action("MemberRankManage", "MemberManage")">分类统计</a>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" name="">等级管理</a>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" name="graph_morris.html">会员记录管理</a>
+                            </li>
+           
+                        </ul>
+                    </li>
+
+                  
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-edit"></i>
+                            <span class="nav-label">订单管理</span><span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="#">自助下单 <span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li>
+                                        <a class="J_menuItem" name="@Url.Action("OrderOfPcb","OrderManage")">自动下单订单列表</a>
+                                    </li>
+
+                                </ul>
+
+                            </li>
+                          
+                            <li>
+                                <a href="#">共享生产<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li>
+                                        <a class="J_menuItem" name="@Url.Action("OrderOfShareProduction", "OrderManage")">共享生产订单列表</a>
+                                    </li>
+
+                                </ul>
+
+                            </li>
+  
+                            <li>
+                                <a href="#">设计外包<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li>
+                                        <a class="J_menuItem" name="@Url.Action("OrderOfSendReceivePackets", "OrderManage")">接发包任务列表</a>
+                                    </li>
+
+                                </ul>
+
+                            </li>
+                            <li>
+                                <a href="#">仪器共享<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li>
+                                        <a class="J_menuItem" name="@Url.Action("RentInstrumentShare", "OrderManage")">租用</a>
+                                    </li>
+                                    <li>
+                                        <a class="J_menuItem" name="@Url.Action("AddInstrumentShare", "OrderManage")">加入</a>
+                                    </li>
+                                </ul>
+
+                            </li>
+                          
+                        </ul>
+                    </li>
+
+                  
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-picture-o"></i>
+                            <span class="nav-label">图片管理</span><span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a class="J_menuItem" name="@Url.Action("AdverManage","ImageManage")">广告管理</a>
+                            </li>
+                          
+                          
+                            <li>
+                                <a class="J_menuItem" name="@Url.Action("AdverClass", "ImageManage")">分类管理</a>
+                            </li>
+                          
+                         
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-envelope"></i>
+                            <span class="nav-label">消息管理</span><span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="#">短信管理<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li>
+                                        <a class="J_menuItem" name="@Url.Action("ShortMessage","NewsManage")">短信事件</a>
+                                    </li>
+
+
+                                    <li>
+                                        <a class="J_menuItem" name="@Url.Action("ShortMessageTemplate", "NewsManage")">短信模板</a>
+                                    </li>
+                                    <li>
+                                        <a class="J_menuItem" name="@Url.Action("ShortMessageRecord", "NewsManage")">短信记录</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            
+                            <li>
+                                <a href="#">系统消息管理 <span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                 
+                                    <li>
+                                        <a class="J_menuItem" href="form_avatar.html">头像裁剪上传</a>
+                                    </li>
+                                    <li>
+                                        <a class="J_menuItem" href="form_webuploader.html">百度WebUploader</a>
+                                    </li>
+                                    <li>
+                                        <a class="J_menuItem" href="form_file_upload.html">DropzoneJS</a>
+                                    </li>
+                                    <li>
+                                        <a class="J_menuItem" href="form_avatar.html">头像裁剪上传</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">系统操作记录 <span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+
+                                 
+                                    <li>
+                                        <a id="log" class="J_menuItem oper" name="@Url.Action("OperationLog","Home")">操作日志</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+
+                    @*<li>
+                        <a href="#">
+                            <i class="fa fa-table"></i>
+                            <span class="nav-label">表格</span><span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a class="J_menuItem" href="table_basic.html">基本表格</a>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" href="table_data_tables.html">DataTables</a>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" href="table_jqgrid.html">jqGrid</a>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" href="table_foo_table.html">Foo Tables</a>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" href="table_bootstrap.html">
+                                    Bootstrap Table
+                                    <span class="label label-danger pull-right">推荐</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>*@
+
+                    @*<li>
+                        <a href="#">
+                            <i class="fa fa-picture-o"></i>
+                            <span class="nav-label">相册</span><span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a class="J_menuItem" href="basic_gallery.html">基本图库</a>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" href="carousel.html">图片切换</a>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" href="blueimp.html">Blueimp相册</a>
+                            </li>
+                        </ul>
+                    </li>*@
+                    @*<li>
+                        <a class="J_menuItem" href="css_animation.html">
+                            <i class="fa fa-magic"></i> <span class="nav-label">CSS动画</span>
+                        </a>
+                    </li>*@
+                    @*<li>
+                        <a href="#">
+                            <i class="fa fa-cutlery"></i>
+                            <span class="nav-label">工具 </span><span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a class="J_menuItem" href="form_builder.html">表单构建器</a>
+                            </li>
+                        </ul>
+                    </li>*@
+
+                </ul>
+            </div>
+        </nav>
+        <!--左侧导航结束-->
+        <!--右侧部分开始-->
+        <div id="page-wrapper" class="gray-bg dashbard-1">
+            <div class="row border-bottom">
+                <nav class="navbar navbar-static-top @*navbar-fixed-top*@" role="navigation" style="margin-bottom: 0">
+                    @*<div class="navbar-header">
+                        <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#">
+                            <i class="fa fa-bars"></i>
+                        </a>
+                       
+                    </div>*@
+                    @*<form role="search" class="navbar-form-custom" method="post" action="search_results.html">
+                        <div class="form-group">
+
+                            <input type="text" placeholder="请输入您需要查找的内容 …" class="form-control" name="top-search" id="top-search">
+                        </div>
+
+                    </form>*@
+
+                    <ul class="nav navbar-top-links navbar-right">
+                        <li>
+                            <span>
+                                <img alt="image" style="margin:-4px 8px 0 0;border-radius: 100%;border: 2px solid #FFF;max-width: 50px;" class="@*img-circle*@" src="~/img/unionlogo.jpg">
+                            </span>
+                        </li>
+                        <li style="padding-right:350px">
+                            <span style="font-size:17px">
+                                欢迎进入电子联盟后台管理系统
+                            </span>
+                        </li>
+                    
+                        <li class="dropdown">
+                            <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                                <i class="fa fa-envelope fa-1x"></i> <span class="label label-warning">16</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-messages">
+                                <li class="m-t-xs">
+                                    <div class="dropdown-messages-box">
+                                        <a href="profile.html" class="pull-left">
+                                            <img alt="image" class="img-circle" src="img/a7.jpg">
+                                        </a>
+                                        <div class="media-body">
+                                            <small class="pull-right">46小时前</small>
+                                            <strong>小四</strong> 这个在日本投降书上签字的军官，建国后一定是个不小的干部吧？
+                                            <br>
+                                            <small class="text-muted">3天前 2014.11.8</small>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <div class="dropdown-messages-box">
+                                        <a href="profile.html" class="pull-left">
+                                            <img alt="image" class="img-circle" src="img/a4.jpg">
+                                        </a>
+                                        <div class="media-body ">
+                                            <small class="pull-right text-navy">25小时前</small>
+                                            <strong>国民岳父</strong> 如何看待“男子不满自己爱犬被称为狗，刺伤路人”？——这人比犬还凶
+                                            <br>
+                                            <small class="text-muted">昨天</small>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <div class="text-center link-block">
+                                        <a class="J_menuItem" href="mailbox.html" data-index="88">
+                                            <i class="fa fa-envelope"></i> <strong> 查看所有消息</strong>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown" style="padding-right:50px">
+                            <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                                <i class="fa fa-bell fa-1x"></i> <span class="label label-primary">8</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-alerts">
+                                <li>
+                                    <a href="mailbox.html">
+                                        <div>
+                                            <i class="fa fa-envelope fa-fw"></i> 您有16条未读消息
+                                            <span class="pull-right text-muted small">4分钟前</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="profile.html">
+                                        <div>
+                                            <i class="fa fa-qq fa-fw"></i> 3条新回复
+                                            <span class="pull-right text-muted small">12分钟钱</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <div class="text-center link-block">
+                                        <a class="J_menuItem" href="notifications.html" data-index="89">
+                                            <strong>查看所有 </strong>
+                                            <i class="fa fa-angle-right"></i>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        @*<li class="hidden-xs">
+                            <a href="index_v1.html" class="J_menuItem" data-index="0"><i class="fa fa-cart-arrow-down"></i> 购买</a>
+                        </li>
+                        <li class="dropdown hidden-xs">
+                            <a class="right-sidebar-toggle" aria-expanded="false">
+                                <i class="fa fa-tasks"></i> 主题
+                            </a>
+                        </li>*@
+                    </ul>
+                </nav>
+            </div>
+            <div class="row content-tabs">
+                <button class="roll-nav roll-left J_tabLeft">
+                    <i class="fa fa-backward"></i>
+                </button>
+                @*<nav class="page-tabs J_menuTabs">
+                    <div class="page-tabs-content">
+                        <a href="javascript:;" class="active J_menuTab" data-id="index_v1.html">首页</a>
+                    </div>
+                </nav>*@
+                <nav class="page-tabs J_menuTabs">
+                    <div class="page-tabs-content" style="margin-left: 0px;">
+                        <a class="J_menuItem J_menuTab active" name="@Url.Action("start","home")" data-id="index_v1.html">首页</a>
+                        @*<a class="J_menuItem J_menuTab" href="javascript:;" data-id="/gxdzbackstage/system/accountmanage/accountregister">账号注册 </a>
+                        <a class="J_menuItem J_menuTab active" href="javascript:;"  data-id="/gxdzbackstage/system/accountmanage/AccountEdit">账号编辑 <i class="fa fa-times-circle"></i></a>*@
+                    </div>
+                </nav>
+                <button class="roll-nav roll-right J_tabRight">
+                    <i class="fa fa-forward"></i>
+                </button>
+  
+                <a href="@Url.Action("LoginIndex","Login")" class="roll-nav roll-right J_tabExit" title="安全退出系统"><i class="fa fa fa-sign-out"></i> 退出</a>
+            </div>
+            <div class="row J_mainContent" id="content-main">
+                <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="@Url.Action("start","home")" frameborder="0" data-id="index_v1.html" seamless></iframe>
+            </div>
+            <div class="footer" @*style="background: #f3f3f4;position:absolute;right:0;left:0 ;z-index: 2030;-webkit-transition-duration: .5s;transition-duration: .5s;"*@>
+                
+                
+                
+                <div class="pull-right">
+                    &copy; 2018-2019
+                    <a href="http://www.njust.edu.cn/" target="_blank">南京电子联盟</a>
+                </div>
+            </div>
+        </div>
+        <!--右侧部分结束-->
+        <!--右侧边栏开始-->
+      
+        <!--右侧边栏结束-->
+      
+      
+    </div>
+  
+    <script src="https://cdn.staticfile.org/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="~/Scripts/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="~/Scripts/plugins/layer/layer.min.js"></script>
+    <script src="~/Scripts/hplus.min.js?v=4.1.0"></script>
+    <script src="~/Scripts_App/Utilities/Utilities.js"></script>
+    @*tab工具类*@
+    @*<script type="text/javascript" src="@Url.Content("~/Scripts/contabs.min.js")"></script>*@
+    @*<script src="~/Scripts/plugins/pace/pace.min.js"></script>*@
+    <script>
+    $(function () {
+        var username = "@ViewBag.username";
+        adminid = "@ViewBag.adminid";
+        var rank = "";
+        document.getElementById("user-strong").innerHTML = "<strong class='font-bold'>" + username + "</strong>";
+        if (adminid == "1")
+            rank = "超级管理员";
+        else if (adminid == "2")
+            rank = "管理员";
+        else if (adminid == "3")
+            rank = "普通用户";
+        else
+            rank = "未知";
+        document.getElementById("user-rank").innerHTML = rank + "<b class='caret'></b>";
+
+
+    });
+   
+    $(document).on('click', '.J_menuItem', function () {
+        var cid = $(this).attr("name");
+        //   $(this).addClass('active').siblings('li').removeClass('active');
+        $(".J_menuItem").css('color', '#a7b1c2');
+        $(this).css('color', '#fff');
+
+        $(".J_iframe").attr("src", cid);
+
+    });
+    function persondata() {
+        $(".J_iframe").attr("src", "@Url.Action("PersonalData", "Home")");
+    }
+    /******
+    ***初始图片
+    ******/
+    //function initialimage()
+    //{
+    //    $.ajax({
+    //        type: "post",
+    //        url: todayurl,
+    //        data: '',
+    //        dataType: 'json',
+    //        async: true,//异步
+    //        success: function (data) {
+    //}
+    </script>
+</body>
+
+</html>

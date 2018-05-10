@@ -1,0 +1,173 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>电子联盟后台管理系统</title>
+
+  
+    <link href="@Url.Content("~/css/bootstrap.min.css?v=3.3.5")" rel="stylesheet" />
+    @*<link href="@Url.Content("~/css/bootstrap-theme.min.css")" rel="Stylesheet" />*@
+    <link href="@Url.Content("~/css/font-awesome.min.css?v=4.4.0")" rel="stylesheet" />
+    @*<link href="~/css/tableexport.min.css" rel="stylesheet">*@
+   
+    @*<link href="~/css/animate.min.css" rel="stylesheet" />*@
+    <link href="@Url.Content("~/css/style.min.css?v=4.0.0")" rel="stylesheet" />
+    <link href="~/css/plugins/toast/animate.css" rel="stylesheet" />
+    <link href="~/css/plugins/toast/toast.css" rel="stylesheet" />
+    <link href="@Url.Content("~/css/plugins/jasny/jasny-bootstrap.min.css")" rel="stylesheet" />
+    <style>
+   
+
+        .file {
+            position: absolute;
+            top: 0;
+            right: 80px;
+            height: 24px;
+            filter: alpha(opacity:0);
+            opacity: 0;
+            width: 260px;
+        }
+          
+        .middle-style {
+         
+    position: absolute;
+  width:100%;
+  height:100%;
+    background-color: white;
+  
+    z-index: 1000;
+            
+        }
+       .middle-style .sk-spinner {
+           
+           position: absolute;
+        
+            left: 50%;
+            top: 50%;
+         
+        }
+    </style>
+  
+    <!--[if IE]>
+        <script src="http://libs.useso.com/js/html5shiv/3.7/html5shiv.min.js"></script>
+    <![endif]-->
+    <script src="@Url.Content("~/Scripts/jquery-1.10.2.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.form.js")"></script>
+    <script src="~/Scripts/plugins/toast/toast.js"></script>
+    <script src="@Url.Content("~/Scripts_App/Utilities/Utilities.js")"></script>
+    <script type="text/javascript">var rootUrl = "@Url.Content("~")";//获取根路径，防止iis部署位置不同</script>
+   
+     <script src="@Url.Content("~/Scripts_App/AccountManage/AccountManage.js")"></script>
+</head>
+<body class="gray-bg">
+    <div class="spiner-example middle-style" style="opacity: 0.8; z-index: 1000;">
+        <div class="sk-spinner sk-spinner-wave">
+            <div class="sk-rect1"></div>
+            <div class="sk-rect2"></div>
+            <div class="sk-rect3"></div>
+            <div class="sk-rect4"></div>
+            <div class="sk-rect5"></div>
+        </div>
+    </div>
+    @*<div class="toast_div" style="width: 300px; height: 300px; border: 1px solid rgb(170, 170, 170); margin: 0px auto; position: relative;"></div>*@
+    <div class="wrapper wrapper-content animated toastdiv">
+       
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>
+                            注册信息填写   
+                        </h5>
+                        <div class="ibox-tools">
+                          
+                            <a class="close-link">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <div  class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">用户类型</label>
+
+                                <div class="col-sm-6">
+                                    <select class="form-control m-b" name="Admin_id" id="adminid">
+                                        <option value="2">管理员</option>
+                                        <option value="3">普通用户</option>
+
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">用户名</label>
+
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" name="Admin_name" id="adminname" />
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+                            @*<form id="myForm" action="" method="post" enctype="multipart/form-data">
+                                <label class="col-sm-3 control-label">上传图片</label>
+                               
+                                <div class="input-group col-sm-6" style="padding-left: 8px">
+                                    <input type="text" name='textfield' id='textfield' class="form-control col-sm-9">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-primary btn-browse">
+                                            浏览
+                                        </button>
+                                    </span>
+
+
+                                    <input type="file" name="fileField" class="file" id="fileField" size="28" onchange="document.getElementById('textfield').value=this.value" />
+
+                                </div>
+
+                            </form>*@
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">密码</label>
+                                <div class="col-sm-6">
+                                    <input type="password" class="form-control" name="Admin_password" id="adminpassword" />
+
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">确认密码</label>
+
+                                <div class="col-sm-6">
+                                    <input type="password" class="form-control" name="password" id="confirmadminpassword" />
+                                </div>
+                            </div>
+                          
+                            <span class="hint-message" style="text-align: center;display:block;width:90%;color:red"></span>
+                            
+
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group">
+                                <div class="col-sm-10 col-sm-offset-5">
+                                    <button class="btn btn-primary confirm-reg-button" type="button">确认注册</button>
+                                    @*<button class="btn btn-white" type="submit">取消</button>*@
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    $(function () {
+        $(".btn-browse").click(function () {
+            $("#fileField").click();
+        });
+    })
+    </script>
+
+</body>
+</html>

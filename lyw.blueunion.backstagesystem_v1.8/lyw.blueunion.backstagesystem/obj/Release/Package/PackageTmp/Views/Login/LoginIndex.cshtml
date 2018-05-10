@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html class="login-bg">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>电子联盟</title>
+  
+    <link href="@Url.Content("~/img/unionlogo.jpg")" rel="shortcut icon" type="image/x-icon" />
+    <link href="@Url.Content("~/css/style.css")" rel="stylesheet" />
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/login.css" rel="stylesheet" />
+    <link href="@Url.Content("~/css/font-awesome.min.css?v=4.4.0")" rel="stylesheet" />
+
+    <link href="@Url.Content("~/css/style.min.css?v=4.1.0")" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    @*<script src="~/Scripts/cloud.js"></script>*@
+    <script type="text/javascript">var rootUrl = "@Url.Content("~")";//获取根路径，防止iis部署位置不同</script>
+    <script src="~/Scripts_App/Login/Login.js"></script>
+    <script>
+        $(function () {
+          
+           
+        })
+    </script>
+</head>
+
+@*<body style="background-color:#1c77ac; background-image:url(../images/light.png); background-repeat:no-repeat; background-position:center top; overflow:hidden;">
+    <div class="middle-box text-center loginscreen  animated fadeInDown">
+        <div>
+            <div>
+
+                <h1 class="logo-name">H+</h1>
+
+            </div>
+            <h3>欢迎使用 H+</h3>
+
+            <form class="m-t" role="form" action="index.html">
+                <div class="form-group">
+                    <input type="email" class="form-control" placeholder="用户名" required="">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="密码" required="">
+                </div>
+                <button type="submit" class="btn btn-primary block full-width m-b">登 录</button>
+
+
+                <p class="text-muted text-center">
+                    <a href="login.html#"><small>忘记密码了？</small></a> | <a href="register.html">注册一个新账号</a>
+                </p>
+
+            </form>
+        </div>
+    </div>
+    <div id="mainBody">
+        <div id="cloud1" class="cloud"></div>
+        <div id="cloud2" class="cloud"></div>
+    </div>
+    <div class="logintop">
+        <span style="font-size:20px">欢迎登录电子联盟后台管理系统</span>
+    </div>
+
+    <div class="loginbody">
+        <span class="systemlogo"></span>
+        <div class="loginbox">
+            <ul>
+                <li><input name="" type="text" id="name" class="loginuser" placeholder="用户名" /></li>
+                <li><input name="" type="password" id="password" class="loginpwd" placeholder="密码" /></li>
+                <li><input name="" type="button" class="loginbtn" value="登录" onclick="signIn()" /></li>
+            </ul>
+
+        </div>
+
+    </div>
+
+</body>*@
+@*#1c77ac background-color: #e6e6e6;*@
+<body class="signin" style="background-color: rgb(28, 119, 172); ">
+    <div class="signinpanel">
+        <div class="row">
+            <div class="col-sm-7">
+                <div class="signin-info">
+                    <div class="" style="margin-bottom: 20px;margin-left:50px">
+                        <img alt="image" style="border-radius: 100%;border: 2px solid #FFF;max-width: 50px;" src="@Url.Content("~/img/unionlogo.jpg")">
+                    </div>
+                    <div class="logopanel m-b">
+                      
+                        <h1>[ 电子联盟 ]</h1>
+                    </div>
+                    <div class="m-b"></div>
+                    <h4>欢迎使用 <strong>电子联盟后台管理系统</strong></h4>
+                    <ul class="m-b">
+                    <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i>账号及密码请从管理员处获取</li>
+                    <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i>忘记或修改密码请联系管理员</li>
+                    <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i>推荐使用谷歌、火狐等主流浏览器</li>
+                    <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i>推荐使用IE11及以上版本的IE浏览器</li>
+                 
+                    </ul>
+                    @*<strong>还没有账号？ <a href="#">立即注册»</a></strong>*@
+                </div>
+            </div>
+            <div class="col-sm-5">
+                @*<div class="logopanel m-b">
+                   
+                </div>*@
+                <div class="logopanel m-b" style="text-align: center;margin-bottom: 20px;">
+                    @**@
+                    @*<h1>[ 电子联盟 ]</h1>*@
+                  
+
+                </div>
+                <div class="info-div">
+                    <h4 class="no-margins" style="font-size:17px">登录到电子联盟后台管理系统</h4>
+                    @*<p class="m-t-md">登录到电子联盟后台管理系统</p>*@
+                    <input type="text" id="name" name="user_name" class="form-control uname" placeholder="用户名">
+                    <input type="password" id="password" name="user_password" class="form-control pword m-b" placeholder="密码">
+                    <span class="response-content" style="color:#fffefe"></span>
+                    <button class="btn btn-primary btn-block loginbtn" onclick="signIn()">登录</button>
+                </div>
+            </div>
+        </div>
+        <div class="signup-footer">
+            <div class="pull-left">
+                © 2018 All Rights Reserved. 南京理工大学
+            </div>
+        </div>
+    </div>
+
+   
+
+</body>
+</html>
