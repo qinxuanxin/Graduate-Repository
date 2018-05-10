@@ -95,3 +95,14 @@ D:\blueunionbackstagesystem\lyw.blueunion.backstagesystem_v1.8\lyw.blueunion.bac
 D:\blueunionbackstagesystem\lyw.blueunion.backstagesystem_v1.8\lyw.blueunion.backstagesystem.Model\obj\Debug\lyw.blueunion.backstagesystem.Model.dll
 D:\blueunionbackstagesystem\lyw.blueunion.backstagesystem_v1.8\lyw.blueunion.backstagesystem.Model\obj\Debug\lyw.blueunion.backstagesystem.Model.pdb
 D:\blueunionbackstagesystem\lyw.blueunion.backstagesystem_v1.8\lyw.blueunion.backstagesystem.Model\obj\Debug\lyw.blueunion.backstagesystem.Model.csprojResolveAssemblyReference.cache
+D:\githubrepository\Graduate-Repository\lyw.blueunion.backstagesystem_v1.8\lyw.blueunion.backstagesystem.Model\bin\Debug\lyw.blueunion.backstagesystem.Model.dll
+D:\githubrepository\Graduate-Repository\lyw.blueunion.backstagesystem_v1.8\lyw.blueunion.backstagesystem.Model\bin\Debug\lyw.blueunion.backstagesystem.Model.pdb
+D:\githubrepository\Graduate-Repository\lyw.blueunion.backstagesystem_v1.8\lyw.blueunion.backstagesystem.Model\bin\Debug\Microsoft.CSharp.dll
+D:\githubrepository\Graduate-Repository\lyw.blueunion.backstagesystem_v1.8\lyw.blueunion.backstagesystem.Model\bin\Debug\System.Data.DataSetExtensions.dll
+D:\githubrepository\Graduate-Repository\lyw.blueunion.backstagesystem_v1.8\lyw.blueunion.backstagesystem.Model\bin\Debug\System.Data.dll
+D:\githubrepository\Graduate-Repository\lyw.blueunion.backstagesystem_v1.8\lyw.blueunion.backstagesystem.Model\bin\Debug\System.dll
+D:\githubrepository\Graduate-Repository\lyw.blueunion.backstagesystem_v1.8\lyw.blueunion.backstagesystem.Model\bin\Debug\System.Xml.dll
+D:\githubrepository\Graduate-Repository\lyw.blueunion.backstagesystem_v1.8\lyw.blueunion.backstagesystem.Model\bin\Debug\System.Xml.Linq.dll
+D:\githubrepository\Graduate-Repository\lyw.blueunion.backstagesystem_v1.8\lyw.blueunion.backstagesystem.Model\obj\Debug\lyw.blueunion.backstagesystem.Model.csprojResolveAssemblyReference.cache
+D:\githubrepository\Graduate-Repository\lyw.blueunion.backstagesystem_v1.8\lyw.blueunion.backstagesystem.Model\obj\Debug\lyw.blueunion.backstagesystem.Model.dll
+D:\githubrepository\Graduate-Repository\lyw.blueunion.backstagesystem_v1.8\lyw.blueunion.backstagesystem.Model\obj\Debug\lyw.blueunion.backstagesystem.Model.pdb

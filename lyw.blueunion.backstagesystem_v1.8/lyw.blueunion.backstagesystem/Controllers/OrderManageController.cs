@@ -298,5 +298,10 @@ namespace lyw.blueunion.backstagesystem.Controllers
            {
                return View();
            }
+           public ActionResult AddInstrumentShareListData()
+           {
+               string responseText = "";
+               return Content(responseText);
+           }
     }
 }
