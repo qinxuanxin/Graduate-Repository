@@ -57,6 +57,7 @@
     <Compile Include="ImageManage\AdverSearchTerm.cs" />
     <Compile Include="Login\Login_AdminModel.cs" />
     <Compile Include="Login\Login_Record.cs" />
+    <Compile Include="Order\AddInstrument.cs" />
     <Compile Include="Order\InstrumentShare.cs" />
     <Compile Include="Order\OrderOfPcb.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

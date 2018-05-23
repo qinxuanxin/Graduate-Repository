@@ -111,14 +111,19 @@ function requestMemberListData() {
                                 "<th>职能</th>" +
                                 "<th>学历</th>" +
                                  "<th>专注领域</th>" +
-                               
+                                 "<th>审核状态</th>" +
                                  "<th></th>" +
                                 "<th></th>" +
                             "</tr>"
                     );
             var checkstatus = "";
             for (var i = 0; i < jsonRecords.length; i++) {
-
+                if (jsonRecords[i]['SUCCESS'] == '0')
+                    checkstatus = "申请中";
+                else if (jsonRecords[i]['SUCCESS'] == '1')
+                    checkstatus = "注册成功";
+                else
+                    checkstatus = "未知状态";
                 $("#table_list").append(
                                 "<tr>" +
                                     "<td>" + jsonRecords[i]['USER_ID'] + "</td>" +
@@ -130,7 +135,7 @@ function requestMemberListData() {
                                     "<td>" + jsonRecords[i]['FUNCTION'] + "</td>" +
                                     "<td>" + jsonRecords[i]['EDUCATION'] + "</td>" +
                                      "<td>" + jsonRecords[i]['FIELD'] + "</td>" +
-                                 
+                                  "<td>" + checkstatus + "</td>" +
                                     "<td><button type='button' data-profession='" + jsonRecords[i]['PROFESSION'] + "'  data-memberid='" + jsonRecords[i]['USER_ID'] + "' class='btn btn-primary search-professionaldetailinfo'>查看</button></td>" +
                                         "<td><button type='button' data-profession='" + jsonRecords[i]['PROFESSION'] + "'  data-memberid='" + jsonRecords[i]['USER_ID'] + "' class='btn btn-danger del-thisprofessional'>删除</button></td>" +
                                 "</tr>"

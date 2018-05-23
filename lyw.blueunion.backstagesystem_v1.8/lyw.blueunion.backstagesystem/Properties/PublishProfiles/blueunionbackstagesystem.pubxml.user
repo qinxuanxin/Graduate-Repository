@@ -10,16 +10,16 @@
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/lyw.blueunion.backstagesystem.Bll.dll">
-      <publishTime>05/04/2018 11:31:28</publishTime>
+      <publishTime>05/20/2018 17:17:53</publishTime>
     </File>
     <File Include="bin/lyw.blueunion.backstagesystem.Dal.dll">
-      <publishTime>05/04/2018 11:31:28</publishTime>
+      <publishTime>05/20/2018 17:17:52</publishTime>
     </File>
     <File Include="bin/lyw.blueunion.backstagesystem.dll">
-      <publishTime>05/07/2018 12:11:22</publishTime>
+      <publishTime>05/20/2018 17:17:54</publishTime>
     </File>
     <File Include="bin/lyw.blueunion.backstagesystem.Model.dll">
-      <publishTime>05/04/2018 11:31:27</publishTime>
+      <publishTime>05/20/2018 17:17:52</publishTime>
     </File>
     <File Include="bin/lyw.blueunion.backstagesystem.Utilities.dll">
       <publishTime>05/04/2018 11:31:27</publishTime>
@@ -1429,7 +1429,7 @@
       <publishTime>05/01/2018 16:51:53</publishTime>
     </File>
     <File Include="Scripts_App/MemberManage/MemberListProfessional.js">
-      <publishTime>05/03/2018 17:44:38</publishTime>
+      <publishTime>05/07/2018 20:55:10</publishTime>
     </File>
     <File Include="Scripts_App/MemberManage/MemberListUnit.js">
       <publishTime>04/10/2018 16:33:06</publishTime>
@@ -1446,14 +1446,20 @@
     <File Include="Scripts_App/NewsManage/ShortMessageTemplate.js">
       <publishTime>04/08/2018 16:09:18</publishTime>
     </File>
+    <File Include="Scripts_App/OrderManage/AddInstrumentShare.js">
+      <publishTime>05/20/2018 16:45:37</publishTime>
+    </File>
     <File Include="Scripts_App/OrderManage/OrderOfPcb.js">
       <publishTime>05/03/2018 20:39:02</publishTime>
     </File>
     <File Include="Scripts_App/OrderManage/OrderOfSendReceivePackets.js">
-      <publishTime>05/04/2018 09:28:09</publishTime>
+      <publishTime>05/08/2018 16:30:33</publishTime>
     </File>
     <File Include="Scripts_App/OrderManage/OrderOfShareProduction.js">
       <publishTime>05/03/2018 20:50:45</publishTime>
+    </File>
+    <File Include="Scripts_App/OrderManage/RentInstrumentShare.js">
+      <publishTime>05/20/2018 16:05:48</publishTime>
     </File>
     <File Include="Scripts_App/Utilities/Utilities.js">
       <publishTime>04/25/2018 16:29:21</publishTime>
@@ -1477,7 +1483,7 @@
       <publishTime>05/01/2018 16:58:45</publishTime>
     </File>
     <File Include="Views/Home/HomeIndex.cshtml">
-      <publishTime>05/04/2018 10:28:13</publishTime>
+      <publishTime>05/20/2018 15:46:40</publishTime>
     </File>
     <File Include="Views/Home/OperationLog.cshtml">
       <publishTime>04/24/2018 16:11:05</publishTime>
@@ -1524,6 +1530,9 @@
     <File Include="Views/NewsManage/ShortMessageTemplate.cshtml">
       <publishTime>04/24/2018 16:12:18</publishTime>
     </File>
+    <File Include="Views/OrderManage/AddInstrumentShare.cshtml">
+      <publishTime>05/20/2018 17:17:31</publishTime>
+    </File>
     <File Include="Views/OrderManage/OrderOfPcb.cshtml">
       <publishTime>05/01/2018 19:54:10</publishTime>
     </File>
@@ -1533,11 +1542,14 @@
     <File Include="Views/OrderManage/OrderOfShareProduction.cshtml">
       <publishTime>05/01/2018 21:36:00</publishTime>
     </File>
+    <File Include="Views/OrderManage/RentInstrumentShare.cshtml">
+      <publishTime>05/20/2018 16:05:52</publishTime>
+    </File>
     <File Include="Views/Web.config">
       <publishTime>02/27/2018 21:23:57</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>05/04/2018 11:31:31</publishTime>
+      <publishTime>05/20/2018 17:17:58</publishTime>
     </File>
   </ItemGroup>
 </Project>

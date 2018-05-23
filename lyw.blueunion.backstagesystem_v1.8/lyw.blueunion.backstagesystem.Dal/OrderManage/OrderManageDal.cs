@@ -658,7 +658,249 @@ namespace lyw.blueunion.backstagesystem.Dal.OrderManage
            return responseText;
          
        }
+       /// <summary>
+       /// 租用仪器订单详细信息
+       /// </summary>
+       /// <param name="order_id"></param>
+       /// <returns></returns>
+       public string rentInstrumentDetailInfo(string order_id)
+       {
+           string responseText = "";
+           string sql = "select * from GXIS_BORROW_VIEW  where ORDER_ID='" + order_id + "'";
+           DataTable dt = OracleHelper.GetTable(sql, null);
+           if (dt.Rows.Count == 0)
+               return "{\"msg\":\"fail\",\"status\":\"查无数据\"}";
+           responseText = JsonHelper.getRecordJson(dt);
+           responseText = "{\"msg\":\"success\",\"status\":\"正确查到数据\",\"servers\":[" + responseText + "]}";
+           return responseText;
+       }
+       /// <summary>
+       /// 删除共享订单
+       /// </summary>
+       /// <param name="order_id"></param>
+       /// <returns></returns>
+       public string rentInstrumentDelOrder(string order_id, string username, string ip)
+       {
+           string responseText = "";
+           string orderdinumwhen = "";
+           string orderidnumwhere = "";
+           string log = "";
+           bool logFlag = false;
+           string[] orderIdArray = order_id.Split(',');
+           foreach (string i in orderIdArray)
+               orderdinumwhen += "WHEN " + "\'" + i.ToString() + "\'" + " THEN '1'  ";
+           for (int iwhere = 0; iwhere < orderIdArray.Length; iwhere++)
+           {
+               if (iwhere > 0)
+                   orderidnumwhere += ",";
+               orderidnumwhere += "\'" + orderIdArray[iwhere].ToString() + "\'";
+           }
 
 
+           //string sql = "update " + tableview + " set DEL_FLAG ='1' where ORDER_ID='" + order_id + "'";
+           string sql = "UPDATE GXIS_BORROW_INFO set DEL_FLAG=CASE ORDER_ID  " + orderdinumwhen + " END  WHERE ORDER_ID IN (" + orderidnumwhere + ")";
+
+
+           int flag = OracleHelper.ExecuteNonQuery(sql, null);
+           if (flag > 0)
+           {
+               responseText = "[{\"msg\":\"success\",\"status\":\"删除成功\"}]";
+               logFlag = true;
+           }
+
+           else
+               responseText = "[{\"msg\":\"fail\",\"status\":\"删除失败\"}]";
+           if (logFlag)
+           {
+               log = username + " 成功删除id为" + order_id + "的订单";
+           }
+           else
+               log = username + " 失败删除id为" + order_id + "的订单";
+           lgdal.setOperationLog(username, log, ip);
+           return responseText;
+       }
+       /// <summary>
+       /// 加入仪器共享数据列表
+       /// </summary>
+       /// <param name="instrument_num"></param>
+       /// <param name="instrument_phone"></param>
+       /// <returns></returns>
+       public string addInstrumentShareListData(AddInstrument instshare)
+       { 
+         string responseText = "";
+          
+           string Select_Sql = "";//条件语句
+           int count = 0;                    //条件查询到的记录数
+           int start = 0;  //起始查询条数
+           int last = 0;      //最终查询条数
+           int pagecount = 0;//总页数
+           int pagesize = 0;
+           int nowpage = 0;
+           if (instshare.Pagesize == "" || instshare.Pagesize == null)
+               pagesize = 10;
+           else
+               pagesize = Convert.ToInt32(instshare.Pagesize);
+
+           if (instshare.Nowpage == "" || instshare.Nowpage == null)
+               nowpage = 1;
+           else
+               nowpage = Convert.ToInt32(instshare.Nowpage);
+
+           if (instshare.Instrument_id != "" && instshare.Instrument_id != null)
+               Select_Sql += string.Format(" and (INSTRUMENT_ID = '{0}')", instshare.Instrument_id);
+           if (instshare.User_phone != "" && instshare.User_phone != null)
+               Select_Sql += string.Format(" and (USER_TEL = '{0}')", instshare.User_phone);
+           if (instshare.Regtime_start != "" && instshare.Regtime_start != null)
+               Select_Sql += string.Format(" and to_char(to_date(ADD_TIME,'yyyy-MM-dd HH24:mi:ss'),'yyyy-MM-dd') >='{0}'", instshare.Regtime_start);
+           if (instshare.Regtime_end != "" && instshare.Regtime_end != null)
+               Select_Sql += string.Format(" and to_char(to_date(ADD_TIME,'yyyy-MM-dd HH24:mi:ss'),'yyyy-MM-dd') <='{0}'", instshare.Regtime_end);
+
+
+           //if (order.Order_status != "00" && order.Order_status != "" && order.Order_status != null)
+           //{
+           //    Select_Sql += string.Format(" and (IS_RECEIVED = '{0}')", order.Order_status);
+           //}
+
+
+
+           string sql0 = "select count(*) from GXIS_ADD_VIEW  where 1=1 and DEL_FLAG='0' " + Select_Sql;
+           DataTable dt0 = OracleHelper.GetTable(sql0, null);
+           count = Convert.ToInt32(dt0.Rows[0][0]);   //得到了全部的记录数
+           if (count % pagesize == 0)                 //计算得到全部页数
+               pagecount = count / pagesize;
+           else
+               pagecount = count / pagesize + 1;
+           if (count == 0)
+               start = 0;
+           else
+               start = (nowpage - 1) * pagesize + 1;         //计算该显示记录的行数范围;
+
+           if (start <= count)
+           {
+               if (count - start >= pagesize)             //start起始 last结束
+                   last = start + pagesize - 1;
+               else
+                   last = count;
+           }
+           string sql = string.Format("select * from(select a.*,rownum row_num from (select * from GXIS_ADD_VIEW  where 1=1 and DEL_FLAG='0' {0} order by INSTRUMENT_ID asc) a) b  where b.row_num between {1} and {2}", Select_Sql, start, last);
+           DataTable dt = OracleHelper.GetTable(sql, null);
+           responseText = JsonHelper.getRecordJson(dt);
+           responseText = "{\"msg\":\"success\",\"count\":" + count.ToString() + ",\"servers\":[" + responseText + "]}";
+           return responseText;
+         
+       }
+      /// <summary>
+       /// 加入仪器设备详细信息
+      /// </summary>
+      /// <param name="instrument_id"></param>
+      /// <returns></returns>
+       public string addInstrumentDetailInfo(string instrument_id)
+       {
+           string responseText = "";
+           string sql = "select * from GXIS_ADD_VIEW  where INSTRUMENT_ID='" + instrument_id + "'";
+           DataTable dt = OracleHelper.GetTable(sql, null);
+           if (dt.Rows.Count == 0)
+               return "{\"msg\":\"fail\",\"status\":\"查无数据\"}";
+           responseText = JsonHelper.getRecordJson(dt);
+           responseText = "{\"msg\":\"success\",\"status\":\"正确查到数据\",\"servers\":[" + responseText + "]}";
+           return responseText;
+       }
+       /// <summary>
+       /// 审核加入仪器设备
+       /// </summary>
+       /// <param name="instrumentorderid"></param>
+       /// <param name="status"></param>
+       /// <param name="username"></param>
+       /// <param name="ip"></param>
+       /// <returns></returns>
+       public string addInstrumentCheck(string instrumentorderid, string status, string username, string ip)
+       {
+           string responseText = "";
+          
+           string log = "";
+           bool logFlag = false;
+        
+
+
+           //string sql = "update " + tableview + " set DEL_FLAG ='1' where ORDER_ID='" + order_id + "'";
+           string sql = string.Format("UPDATE GXIS_INFO set REV_FLAG='{0}'  WHERE INSTRUMENT_ID='{1}'", status, instrumentorderid);
+
+
+           int flag = OracleHelper.ExecuteNonQuery(sql, null);
+           if (flag > 0)
+           {
+               responseText = "{\"msg\":\"success\",\"status\":\"审核成功\"}";
+               logFlag = true;
+           }
+
+           else
+               responseText = "{\"msg\":\"fail\",\"status\":\"审核失败\"}";
+           if (logFlag)
+           {
+               if (status == "2")
+
+                   log = username + " 成功更新id为" + instrumentorderid + "的设备审核状态为成功";
+               else
+                   log = username + " 成功更新id为" + instrumentorderid + "的设备审核状态为失败";
+           }
+           else
+           {
+               if (status == "2")
+
+                   log = username + " 失败更新id为" + instrumentorderid + "的设备审核状态为成功";
+               else
+                   log = username + " 失败更新id为" + instrumentorderid + "的设备审核状态为失败";
+           }
+              
+           lgdal.setOperationLog(username, log, ip);
+           return responseText;
+       }
+       /// <summary>
+       /// 删除加入的仪器设备
+       /// </summary>
+       /// <param name="instrumentorderid"></param>
+       /// <param name="username"></param>
+       /// <param name="ip"></param>
+       /// <returns></returns>
+       public string addInstrumentDel(string instrumentorderid, string username, string ip)
+       {
+           string responseText = "";
+           string orderdinumwhen = "";
+           string orderidnumwhere = "";
+           string log = "";
+           bool logFlag = false;
+           string[] orderIdArray = instrumentorderid.Split(',');
+           foreach (string i in orderIdArray)
+               orderdinumwhen += "WHEN " + "\'" + i.ToString() + "\'" + " THEN '1'  ";
+           for (int iwhere = 0; iwhere < orderIdArray.Length; iwhere++)
+           {
+               if (iwhere > 0)
+                   orderidnumwhere += ",";
+               orderidnumwhere += "\'" + orderIdArray[iwhere].ToString() + "\'";
+           }
+
+
+           //string sql = "update " + tableview + " set DEL_FLAG ='1' where ORDER_ID='" + order_id + "'";
+           string sql = "UPDATE GXIS_INFO set DEL_FLAG=CASE INSTRUMENT_ID  " + orderdinumwhen + " END  WHERE INSTRUMENT_ID IN (" + orderidnumwhere + ")";
+
+
+           int flag = OracleHelper.ExecuteNonQuery(sql, null);
+           if (flag > 0)
+           {
+               responseText = "{\"msg\":\"success\",\"status\":\"删除成功\"}";
+               logFlag = true;
+           }
+
+           else
+               responseText = "{\"msg\":\"fail\",\"status\":\"删除失败\"}";
+           if (logFlag)
+           {
+               log = username + " 成功删除id为" + instrumentorderid + "的订单";
+           }
+           else
+               log = username + " 失败删除id为" + instrumentorderid + "的订单";
+           lgdal.setOperationLog(username, log, ip);
+           return responseText;
+       }
     }
 }

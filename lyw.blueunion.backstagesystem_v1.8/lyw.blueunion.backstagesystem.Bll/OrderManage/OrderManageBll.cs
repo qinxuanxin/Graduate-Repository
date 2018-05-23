@@ -215,5 +215,78 @@ namespace lyw.blueunion.backstagesystem.Bll.OrderManage
            responseText = orderdal.rentInstrumentShareListData(instshare);
            return responseText;
        }
+
+       /// <summary>
+       /// 租用仪器订单详细信息
+       /// </summary>
+       /// <param name="order_id"></param>
+       /// <returns></returns>
+       public string rentInstrumentDetailInfo(string order_id)
+       {
+           string responseText = "";
+           responseText = orderdal.rentInstrumentDetailInfo(order_id);
+           return responseText;
+       }
+       /// <summary>
+       /// 删除共享订单
+       /// </summary>
+       /// <param name="order_id"></param>
+       /// <returns></returns>
+       public string rentInstrumentDelOrder(string order_id, string username, string ip)
+       {
+           string responseText = "";
+           responseText = orderdal.rentInstrumentDelOrder(order_id,username,ip);
+           return responseText;
+       }
+    /// <summary>
+       /// 加入仪器共享数据列表
+    /// </summary>
+    /// <param name="instrument_num"></param>
+    /// <param name="instrument_phone"></param>
+    /// <returns></returns>
+       public string addInstrumentShareListData(AddInstrument addinst)
+       {
+           string responseText = "";
+           responseText = orderdal.addInstrumentShareListData(addinst);
+           return responseText;
+       }
+       /// <summary>
+       /// 加入仪器设备详细信息
+       /// </summary>
+       /// <param name="instrument_id"></param>
+       /// <returns></returns>
+       public string addInstrumentDetailInfo(string instrument_id)
+       {
+           string responseText = "";
+           responseText = orderdal.addInstrumentDetailInfo(instrument_id);
+           return responseText;
+       }
+       /// <summary>
+       /// 审核加入仪器设备
+       /// </summary>
+       /// <param name="instrumentorderid"></param>
+       /// <param name="status"></param>
+       /// <param name="username"></param>
+       /// <param name="ip"></param>
+       /// <returns></returns>
+       public string addInstrumentCheck(string instrumentorderid,string  status,string  username,string ip)
+       {
+           string responseText = "";
+           responseText = orderdal.addInstrumentCheck(instrumentorderid,status,username,ip);
+           return responseText;
+       }
+       /// <summary>
+       /// 删除加入的仪器设备
+       /// </summary>
+       /// <param name="instrumentorderid"></param>
+       /// <param name="username"></param>
+       /// <param name="ip"></param>
+       /// <returns></returns>
+       public string addInstrumentDel(string instrumentorderid,string username,string ip)
+       {
+           string responseText = "";
+           responseText = orderdal.addInstrumentDel(instrumentorderid, username, ip);
+           return responseText;
+       }
     }
 }

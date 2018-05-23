@@ -12,6 +12,10 @@
  enter_qual_gua = "/gxdzwx/gxdzimages/gxdzwxlogin/factory/quality_guaratee/";
  enter_related = "/gxdzwx/gxdzimages/gxdzwxlogin/factory/related_picture/";
 /****************企业会员注册图片所在路径**************************/
+/********************共享设备图片所在路径******************************/
+ instrument_image="/gxdzwx/gxdzimages/gxdzwxnaerbyfactory/instrument_pic/";
+
+/********************共享设备图片所在路径******************************/
  $(function () {
     
 

@@ -71,12 +71,17 @@
                                 </li>
                                 <li>
                                     <a href="mail_compose.html#">
-                                        <i class="fa fa-circle text-navy"></i>审核成功
+                                        <i class="fa fa-circle text-navy"></i>已租到
                                         <span class="label label-primary pull-right task-bided">16</span>
                                     </a>
                                 </li>
-                             
-
+                                <li>
+                                    <a href="mail_compose.html#">
+                                        <i class="fa fa-circle text-info"></i> 已归还
+                                        <span class="label label-warning pull-right task-deposit">16</span>
+                                    </a>
+                                </li>
+                           
 
                             </ul>
 
@@ -93,7 +98,7 @@
 
 
 
-                @*详细设备信息*@
+                @*详细任务信息*@
 
                 <div class="wrapper wrapper-content  instrumentofpcbinfo mail-box" style="display:none">
 
@@ -102,7 +107,7 @@
                             <div class="ibox float-e-margins">
                                 <div class="ibox-title">
                                     <h5>
-                                        当前设备详细信息
+                                        当前订单详细信息
                                     </h5>
                                     <div class="ibox-tools">
                                         <a class="collapse-link">
@@ -114,233 +119,176 @@
                                 <div class="ibox-content">
                                     <form method="get" class="form-horizontal">
                                         <div class="form-group">
+                                            <label class="col-sm-2 control-label">订单编号</label>
+
+                                            <div class="col-sm-10">
+                                                <input type="text" disabled class="form-control " id="detailorder_num" name="detailorder_num">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
                                             <label class="col-sm-2 control-label">设备编号</label>
 
-                                            <div class="col-sm-10">
+                                            <div class="col-sm-6">
                                                 <input type="text" disabled class="form-control " id="detailorder_instrumentid" name="detailorder_instrumentid">
                                             </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">设备名称</label>
-
-                                            <div class="col-sm-10">
-                                                <input type="text" disabled class="form-control " id="detailorder_instrumentname" name="detailorder_instrumentname">
-                                            </div>
-                                         
-                                        </div>
-                                        <div class="form-group">
-
-
-                                            <label class="col-sm-2 control-label">设备图片</label>
-
-                                            <div class="col-sm-3">
-                                                <div class="dropdown profile-element">
-                                                    <span>
-                                                        <img style="height:200px;width:242px" alt="image" class="" src="~/img/id-card.png" data-original="" id="detailinfo_instrumentimage" name="detailinfo_instrumentimage">
-
-                                                    </span>
-
-
+                                            <div class="col-sm-4">
+                                                  <button type="button" class="btn btn-sm btn-primary"> 获取设备信息</button>    
                                                 </div>
-
                                             </div>
-                                        </div>
+                                      
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label">设备类型</label>
+                                            <label class="col-sm-2 control-label">下单用户</label>
 
-                                            <div class="col-sm-10">
-                                                <input type="text" disabled class="form-control " id="detailorder_instrumenttype" name="detailorder_instrumenttype">
+                                            <div class="col-sm-6">
+                                                <input type="text" disabled class="form-control " id="detailorder_placeorderuser" name="detailorder_placeorderuser">
                                             </div>
-
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">设备品牌</label>
-
-                                            <div class="col-sm-10">
-                                                <input type="text" disabled class="form-control " id="detailorder_instrumentbrands" name="detailorder_instrumentbrands">
+                                            <div class="col-sm-4">
+                                                <button type="button" class="btn btn-sm btn-primary"> 获取用户信息</button>
                                             </div>
-
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">设备型号</label>
-
-                                            <div class="col-sm-10">
-                                                <input type="text" disabled class="form-control " id="detailorder_instrumentmodel" name="detailorder_instrumentmodel">
-                                            </div>
-
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">技术参数</label>
-
-                                            <div class="col-sm-10">
-                                                <textarea type="text" disabled class="form-control " id="detailorder_capability" name="detailorder_capability"></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">出厂日期</label>
-
-                                            <div class="col-sm-10">
-                                                <input type="text" disabled class="form-control " id="detailorder_isdate" name="detailorder_isdate">
-                                            </div>
-
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">出产地</label>
-
-                                            <div class="col-sm-10">
-                                                <input type="text" disabled class="form-control " id="detailorder_attribution" name="detailorder_attribution">
-                                            </div>
-
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">归属单位</label>
-
-                                            <div class="col-sm-10">
-                                                <input type="text" disabled class="form-control " id="detailorder_company" name="detailorder_company">
-                                            </div>
-
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">设备所在地区</label>
-
-                                            <div class="col-sm-10">
-                                                <input type="text" disabled class="form-control " id="detailorder_location" name="detailorder_location">
-                                            </div>
-
                                         </div>
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">共享方式</label>
 
-                                            <div class="col-sm-3">
+                                            <div class="col-sm-2">
                                                 <input type="text" disabled class="form-control " id="detailorder_instrumentway" name="detailorder_instrumentway">
                                             </div>
-                                            <label class="col-sm-2 control-label">共享时间</label>
+                                            <label class="col-sm-2 control-label">押金</label>
 
-                                            <div class="col-sm-5">
-                                                <input type="text" disabled class="form-control " id="detailorder_usetime" name="detailorder_usetime">
+                                            <div class="col-sm-2">
+                                                <input type="text" disabled class="form-control " id="detailorder_deposite" name="detailorder_deposite">
+                                            </div>
+                                            <label class="col-sm-2 control-label">租金</label>
+
+                                            <div class="col-sm-2">
+                                                <input type="text" disabled class="form-control " id="detailorder_rentfee" name="detailorder_rentfee">
                                             </div>
                                         </div>
-                                          
-                                            <div class="form-group">
-                                                <label class="col-sm-2 control-label">添加用户</label>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">使用起始时间</label>
 
-                                                <div class="col-sm-6">
-                                                    <input type="text" disabled class="form-control " id="detailorder_placeorderuser" name="detailorder_placeorderuser">
-                                                </div>
-                                                <div class="col-sm-4">
-                                                    <button type="button" class="btn btn-sm btn-primary"> 获取用户信息</button>
-                                                </div>
+                                            <div class="col-sm-4">
+                                                <input type="text" disabled class="form-control " id="detailorder_usestarttime" name="detailorder_usestarttime">
                                             </div>
-                                            <div class="form-group">
+                                            <label class="col-sm-2 control-label">使用截止时间</label>
 
-                                                <label class="col-sm-2 control-label">押金</label>
-
-                                                <div class="col-sm-2">
-                                                    <input type="text" disabled class="form-control " id="detailorder_deposite" name="detailorder_deposite">
-                                                </div>
-                                                <label class="col-sm-2 control-label">租金</label>
-
-                                                <div class="col-sm-2">
-                                                    <input type="text" disabled class="form-control " id="detailorder_rentfee" name="detailorder_rentfee">
-                                                </div>
+                                            <div class="col-sm-4">
+                                                <input type="text" disabled class="form-control " id="detailorder_useendtime" name="detailorder_useendtime">
                                             </div>
-                                            <div class="form-group">
-                                                <label class="col-sm-2 control-label">使用起始时间</label>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">下单时间</label>
 
-                                                <div class="col-sm-4">
-                                                    <input type="text" disabled class="form-control " id="detailorder_usestarttime" name="detailorder_usestarttime">
-                                                </div>
-                                                <label class="col-sm-2 control-label">使用截止时间</label>
-
-                                                <div class="col-sm-4">
-                                                    <input type="text" disabled class="form-control " id="detailorder_useendtime" name="detailorder_useendtime">
-                                                </div>
+                                            <div class="col-sm-10">
+                                                <input type="text" disabled class="form-control " id="detailorder_placeordertime" name="detailorder_placeordertime">
                                             </div>
-                                            <div class="form-group">
-                                                <label class="col-sm-2 control-label">添加时间</label>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">实际付款金额</label>
 
-                                                <div class="col-sm-10">
-                                                    <input type="text" disabled class="form-control " id="detailorder_addtime" name="detailorder_addtime">
-                                                </div>
+                                            <div class="col-sm-10">
+                                                <input type="text" disabled class="form-control " id="detailorder_actualmoney" name="detailorder_actualmoney">
                                             </div>
-                                            <div class="form-group">
-                                                <label class="col-sm-2 control-label">是否在所在地</label>
+                                        </div>
 
-                                                <div class="col-sm-4">
-                                                    <input type="text" disabled class="form-control " id="detailorder_localornot" name="detailorder_localornot">
-                                                </div>
-                                                <label class="col-sm-2 control-label">所在地费用</label>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">运费</label>
 
-                                                <div class="col-sm-4">
-                                                    <input type="text" disabled class="form-control " id="detailorder_localfee" name="detailorder_localfee">
-                                                </div>
+                                            <div class="col-sm-10">
+                                                <input type="text" disabled class="form-control " id="detailorder_freight" name="detailinfo_freight">
                                             </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">订单状态</label>
 
-                                            <div class="form-group">
-                                                <label class="col-sm-2 control-label">是否外借</label>
-
-                                                <div class="col-sm-2">
-                                                    <input type="text" disabled class="form-control " id="detailorder_borrowornot" name="detailorder_borrowornot">
-                                                </div>
-                                                <label class="col-sm-2 control-label">外借押金</label>
-
-                                                <div class="col-sm-2">
-                                                    <input type="text" disabled class="form-control " id="detailorder_borrowdeposit" name="detailorder_borrowdeposit">
-                                                </div>
-                                                <label class="col-sm-2 control-label">外借租金</label>
-                                                <div class="col-sm-2">
-                                                    <input type="text" disabled class="form-control " id="detailorder_rentfee" name="detailorder_rentfee">
-                                                </div>
+                                            <div class="col-sm-10">
+                                                <input type="text" disabled class="form-control " id="detailorder_orderstatus" name="detailinfo_orderstatus">
                                             </div>
-                                            <div class="form-group">
-                                                <label class="col-sm-2 control-label">是否转让</label>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">支付状态</label>
 
-                                                <div class="col-sm-2">
-                                                    <input type="text" disabled class="form-control " id="detailorder_turnornot" name="detailorder_turnornot">
-                                                </div>
-                                                <label class="col-sm-2 control-label">转让费用</label>
-
-                                                <div class="col-sm-2">
-                                                    <input type="text" disabled class="form-control " id="detailorder_turnfee" name="detailorder_turnfee">
-                                                </div>
+                                            <div class="col-sm-10">
+                                                <input type="text" disabled class="form-control " id="detailorder_paystatus" name="detailinfo_paystatus">
                                             </div>
+                                        </div>
 
 
-                                            <div class="form-group">
-                                                <label class="col-sm-2 control-label">审核状态</label>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">配送状态</label>
 
-                                                <div class="col-sm-10">
-                                                    <input type="text" disabled class="form-control " id="detailorder_checkstatus" name="detailorder_checkstatus">
-                                                </div>
+                                            <div class="col-sm-10">
+                                                <input type="text" disabled class="form-control " id="detailorder_shippingstatus" name="detailorder_shippingstatus">
                                             </div>
-                                            <div class="form-group">
-                                                <label class="col-sm-2 control-label">租借状态</label>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">支付方式</label>
 
-                                                <div class="col-sm-10">
-                                                    <input type="text" disabled class="form-control " id="detailorder_borrowstatus" name="detailorder_borrowstatus">
-                                                </div>
+                                            <div class="col-sm-10">
+                                                <input type="text" disabled class="form-control " id="detailorder_payway" name="detailorder_payway">
                                             </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">配送方式</label>
 
-
-
-                                            <div class="hr-line-dashed"></div>
-                                            <div class="form-group">
-                                                <div class="col-sm-4 col-sm-offset-2">  
-                                                    <button class="btn btn-primary checkbtn" type="button" data-status="2">审核成功</button>
-                                                    <button class="btn btn-warning checkbtn" type="button" data-status="1">审核失败</button>  
-                                                      <button class="btn btn-white backprepage" type="button">返回</button>
-                                                </div>
+                                            <div class="col-sm-10">
+                                                <textarea type="text" disabled class="form-control " id="detailorder_shippingway" name="detailorder_shippingway"></textarea>
                                             </div>
-</form>
+                                        </div>
+
+
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">收货人</label>
+
+                                            <div class="col-sm-10">
+                                                <input type="text" disabled class="form-control " id="detailorder_consignee" name="detailorder_consignee">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">收货人地址</label>
+
+                                            <div class="col-sm-10">
+                                                <input type="text" disabled class="form-control " id="detailorder_consigneeaddress" name="detailorder_consigneeaddress">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">收货人邮编</label>
+
+                                            <div class="col-sm-10">
+                                                <input type="text" disabled class="form-control " id="detailorder_consigneezipcode" name="detailorder_consigneezipcode">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">收货人手机号</label>
+
+                                            <div class="col-sm-10">
+                                                <input type="text" disabled class="form-control " id="detailorder_consigneemobile" name="detailorder_consigneemobile">
+                                            </div>
+                                        </div>
+
+
+
+
+
+
+                                        <div class="hr-line-dashed"></div>
+                                        <div class="form-group">
+                                            <div class="col-sm-4 col-sm-offset-2">
+                                                @*<button class="btn btn-primary" type="submit">保存内容</button>*@
+                                                <button class="btn btn-white backprepage" type="button">返回</button>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                
 
 
-
-                @*详细设备信息*@
+                @*详细任务信息*@
 
 
 
@@ -352,18 +300,18 @@
 
                         <form role="form" class="form-inline">
                             <div class="form-group" style="margin-right:10px">
-                                <input type="text" style="width:150px" placeholder="请输入设备编号" class="form-control" id="instrument_num" name="instrument_num">
+                                <input type="text" style="width:150px" placeholder="请输入订单编号" class="form-control" id="order_num" name="order_num">
                             </div>
                             <div class="form-group" style="margin-right:10px">
-                                <input type="text" style="width:150px" placeholder="请输入设备所有者手机号" class="form-control" id="instrument_phone" name="instrument_phone">
+                                <input type="text" style="width:150px" placeholder="请输入下单人手机号" class="form-control" id="order_phone" name="order_phone">
                             </div>
 
-                            @*<div class="form-group" style="margin-right:0px">
+                            <div class="form-group" style="margin-right:0px">
                                 <label for="regtime_start" class="">下单时间</label>
                                 <input type="date" id="order_regtime_start" name="order_regtime_start" class="form-control">
                                 <label for="regtime_end" class="">至</label>
                                 <input type="date" id="order_regtime_end" name="order_regtime_end" class="form-control">
-                            </div>*@
+                            </div>
 
                             <hr />
 
@@ -375,18 +323,18 @@
 
                     <div class="mail-tools tooltip-demo m-t-md">
                         <div class="btn-group pull-right">
-                            <button class="btn btn-primary search-instrument-info" type="button" title="查看满足条件的订单单号">查询</button>
+                            <button class="btn btn-primary search-instrument-data" type="button" title="查看满足条件的订单单号">查询</button>
 
                         </div>
                         <button class="btn btn-white btn-sm search-instrumentorderdetailinfo" data-toggle="tooltip" data-placement="left" title="查看当前选中订单信息">
                             <i class="fa fa-envelope"></i> 查看
                         </button>
                         @* <button class="btn btn-white btn-sm search-pcblogisticsinfo" data-toggle="tooltip" data-placement="left" title="查看物流信息">
-                                <i class="fa fa-refresh"></i> 物流
-                            </button>
-                            <button class="btn btn-white btn-sm send-goods-btn" data-toggle="tooltip"  title="添加至发货列表">
-                                <i class="fa fa-eye"></i> 发货
-                            </button>*@
+                    <i class="fa fa-refresh"></i> 物流
+                </button>
+                <button class="btn btn-white btn-sm send-goods-btn" data-toggle="tooltip"  title="添加至发货列表">
+                    <i class="fa fa-eye"></i> 发货
+                </button>*@
                         <div class="modal inmodal" id="sendModel" tabindex="-1" role="dialog" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content animated bounceInRight">
@@ -429,9 +377,9 @@
                             </div>
                         </div>
                         @*<button class="btn btn-white btn-sm cancel-goods" data-toggle="tooltip" data-placement="top" title="标为废弃订单">
-                                <i class="fa fa-trash-o"></i>退货
-                            </button>*@
-                        <button class="btn btn-white btn-sm del-thisinstrument" data-toggle="tooltip" data-placement="top" title="标为垃圾订单">
+                    <i class="fa fa-trash-o"></i>退货
+                </button>*@
+                        <button class="btn btn-white btn-sm del-thisorderofpcb" data-toggle="tooltip" data-placement="top" title="标为垃圾订单">
                             <i class="fa fa-trash-o"></i>删除
                         </button>
 
@@ -503,7 +451,8 @@
 
     <script type="text/javascript">var rootUrl = "@Url.Content("~")";//获取根路径，防止iis部署位置不同</script>
     <script src="@Url.Content("~/Scripts_App/Utilities/Utilities.js")"></script>
-    <script src="@Url.Content("~/Scripts_App/OrderManage/AddInstrumentShare.js")"></script>
+
+    <script src="@Url.Content("~/Scripts_App/OrderManage/RentInstrumentShare.js")"></script>
 
 </body>
 

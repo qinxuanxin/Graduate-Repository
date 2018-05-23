@@ -395,7 +395,7 @@ function requestDetailInfo(taskid) {
                         }
 
                         /*******审核此任务在托管中按钮********/
-
+                        //img - circle
                         var receivefinishid = "";
                         if (jsonreceivepackage[i].IS_FINISHID == '0')
                             receivefinishid = "未完成";
@@ -407,7 +407,7 @@ function requestDetailInfo(taskid) {
                                           + '<a href="profile.html">'
                                           + '<div class="col-sm-4">'
                                           + '<div class="text-center">'
-                                          + '<img alt="image" class="img-circle m-t-xs img-responsive" src="' + imageurl + '">'
+                                          + '<img alt="image" style="margin:-4px 8px 0 0;border-radius: 100%;border: 2px solid #FFF;width: 80px; height:80px" class=" m-t-xs img-responsive" src="' + imageurl + '">'
                                           + '<div class="m-t-xs font-bold"></div>'
                                           + '</div>'
                                           + '</div>'
@@ -435,18 +435,21 @@ function requestDetailInfo(taskid) {
                                + '<a href="profile.html">'
                                + '<div class="col-sm-4">'
                                + '<div class="text-center">'
-                               + '<img alt="image" class="img-circle m-t-xs img-responsive" src="' + imageurl + '">'
-                               + '<div class="m-t-xs font-bold">CTO</div>'
+                               + '<img alt="image" style="margin:-4px 8px 0 0;border-radius: 100%;border: 2px solid #FFF;width: 80px;height:80px" class=" m-t-xs img-responsive" src="' + imageurl + '">'
+                               //+ '<div class="m-t-xs font-bold">CTO</div>'
                                + '</div>'
                                + '</div>'
                                + '</a>'
                                + '<div class="col-sm-8">'
                                + '<a>'
-                               + '<h3><strong>' + jsonreceiveuserinfo[i].NICK_NAME + '</strong></h3>'
-                               + '<p><i class="fa fa-map-marker"></i>' + jsonreceiveuserinfo[i].MEMBER_TYPE + '</p>'
+                               + '<h3 style="padding-bottom:3px;"><strong>' + jsonreceiveuserinfo[i].NICK_NAME + '</strong></h3>'
+                               //<i class="fa fa-map-marker"></i>
+                               + '<p>' + jsonreceiveuserinfo[i].MEMBER_TYPE + '</p>'
+                              
                                + '</a>'
-                               + '<span title="Phone">Tel:' + jsonreceiveuserinfo[i].USER_TEL + '</span>'
-                                  + '<p>申请接包时间:' + jsonreceivepackage[i].RECEIVE_TIME + '</p>'
+                               + '<span  title="Phone">Tel:' + jsonreceiveuserinfo[i].USER_TEL + '</span>'
+                               + '<p>申请接包时间:' + jsonreceivepackage[i].RECEIVE_TIME + '</p>'
+                               +'<hr/>'
                                + '  <a  class="btn btn-white btn-sm tobidsucess" data-userid=' + jsonreceivepackage[i].USER_ID + ' data-taskid=' + jsonreceivepackage[i].TASK_ID + ' data-toggle="tooltip" data-placement="top" title="选中此用户">'
                                + '选中此用户竞标成功</a>'
                                + '</div>'

@@ -585,6 +585,7 @@
     <Content Include="Scripts_App\OrderManage\OrderOfPcb.js" />
     <Content Include="Scripts_App\OrderManage\OrderOfSendReceivePackets.js" />
     <Content Include="Scripts_App\OrderManage\OrderOfShareProduction.js" />
+    <Content Include="Scripts_App\OrderManage\AddInstrumentShare.js" />
     <Content Include="Scripts_App\OrderManage\RentInstrumentShare.js" />
     <Content Include="Scripts_App\Utilities\Utilities.js" />
     <Content Include="Web.config" />

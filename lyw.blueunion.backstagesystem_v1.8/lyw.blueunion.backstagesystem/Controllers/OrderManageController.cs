@@ -271,7 +271,8 @@ namespace lyw.blueunion.backstagesystem.Controllers
             responseText = orderbll.sendGoods(send_type_id, track_num, order_id, type, returnorsendtype, username, ip);
             return Content(responseText);
         }
-        /// <summary>
+           #region 仪器共享订单
+           /// <summary>
         /// 租用仪器共享
         /// </summary>
         /// <returns></returns>
@@ -291,18 +292,96 @@ namespace lyw.blueunion.backstagesystem.Controllers
                return Content(responseText);
            }
         /// <summary>
-        /// 加入仪器共享
+        /// 租用仪器订单详细信息
+        /// </summary>
+        /// <param name="order_id"></param>
+        /// <returns></returns>
+           public ActionResult RentInstrumentDetailInfo(string order_id)
+           {
+               string responseText = "";
+               responseText = orderbll.rentInstrumentDetailInfo(order_id);
+               return Content(responseText);
+           
+           }
+        /// <summary>
+        /// 删除共享订单
+        /// </summary>
+        /// <param name="order_id"></param>
+        /// <returns></returns>
+           public ActionResult RentInstrumentDelOrder(string order_id)
+           {
+               string responseText = "";
+               if (Request.Cookies["ip"] != null)
+                   ip = Request.Cookies["ip"].Value;
+               if (Request.Cookies["userName"] != null)
+                   username = System.Web.HttpContext.Current.Server.UrlDecode(Request.Cookies["userName"].Value);
+               responseText = orderbll.rentInstrumentDelOrder(order_id,username,ip);
+               return Content(responseText);
+           }
+           #endregion
+           #region 加入仪器共享
+           /// <summary>
+         /// 加入仪器共享
         /// </summary>
         /// <returns></returns>
            public ActionResult AddInstrumentShare()
            {
                return View();
            }
-           public ActionResult AddInstrumentShareListData()
+        /// <summary>
+        /// 加入仪器共享数据列表
+        /// </summary>
+        /// <param name="instrument_num"></param>
+        /// <param name="instrument_phone"></param>
+        /// <returns></returns>
+           public ActionResult AddInstrumentShareListData(AddInstrument addinst)
            {
                string responseText = "";
-               responseText = "意外";
+               responseText = orderbll.addInstrumentShareListData(addinst);
                return Content(responseText);
            }
+        /// <summary>
+        /// 加入仪器设备详细信息
+        /// </summary>
+        /// <param name="instrument_id"></param>
+        /// <returns></returns>
+           public ActionResult AddInstrumentDetailInfo(string instrument_id)
+           {
+               string responseText = "";
+               responseText = orderbll.addInstrumentDetailInfo(instrument_id);
+               return Content(responseText);
+           }
+        /// <summary>
+        /// 审核加入仪器设备
+        /// </summary>
+        /// <param name="instrumentorderid"></param>
+        /// <param name="status"></param>
+        /// <returns></returns>
+           public ActionResult AddInstrumentCheck(string instrumentorderid,string status)
+           {
+               string responseText = "";
+               if (Request.Cookies["ip"] != null)
+                   ip = Request.Cookies["ip"].Value;
+               if (Request.Cookies["userName"] != null)
+                   username = System.Web.HttpContext.Current.Server.UrlDecode(Request.Cookies["userName"].Value);
+               responseText = orderbll.addInstrumentCheck(instrumentorderid, status, username, ip);
+               return Content(responseText);
+           }
+        /// <summary>
+        /// 删除加入的仪器设备
+        /// </summary>
+        /// <param name="instrumentorderid"></param>
+        /// <returns></returns>
+           public ActionResult AddInstrumentDel(string instrumentorderid)
+           {
+               string responseText = "";
+               if (Request.Cookies["ip"] != null)
+                   ip = Request.Cookies["ip"].Value;
+               if (Request.Cookies["userName"] != null)
+                   username = System.Web.HttpContext.Current.Server.UrlDecode(Request.Cookies["userName"].Value);
+               responseText = orderbll.addInstrumentDel(instrumentorderid, username, ip);
+               return Content(responseText);
+           }
+           #endregion
     }
 }
