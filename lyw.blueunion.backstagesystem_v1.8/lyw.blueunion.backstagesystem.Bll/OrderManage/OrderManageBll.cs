@@ -288,5 +288,16 @@ namespace lyw.blueunion.backstagesystem.Bll.OrderManage
            responseText = orderdal.addInstrumentDel(instrumentorderid, username, ip);
            return responseText;
        }
+       /// <summary>
+       /// 获取下单会员信息
+       /// </summary>
+       /// <param name="member_phone"></param>
+       /// <returns></returns>
+       public string getMemberInfo(string member_phone)
+       {
+           string responseText = "";
+           responseText = orderdal.getMemberInfo(member_phone);
+           return responseText;
+       }
     }
 }

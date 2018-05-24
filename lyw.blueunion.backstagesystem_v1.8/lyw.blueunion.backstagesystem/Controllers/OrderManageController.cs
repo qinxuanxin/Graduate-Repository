@@ -383,5 +383,19 @@ namespace lyw.blueunion.backstagesystem.Controllers
                return Content(responseText);
            }
            #endregion
+
+        #region 共享方法
+        /// <summary>
+        /// 获取下单会员信息
+        /// </summary>
+        /// <param name="member_phone"></param>
+        /// <returns></returns>
+           public ActionResult GetMemberInfo(string member_phone)
+           {
+               string responseText = "";
+               responseText = orderbll.getMemberInfo(member_phone);
+               return Content(responseText);
+           }
+        #endregion
     }
 }

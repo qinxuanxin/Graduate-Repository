@@ -1,7 +1,7 @@
 ﻿var addinstshareurl = rootUrl + "OrderManage/AddInstrumentShareListData?random=" + Math.floor(Math.random() * (100000 + 1));//请求地址
-var detailurl = rootUrl + "OrderManage/RentInstrumentDetailInfo?random=" + Math.floor(Math.random() * (100000 + 1));//请求地址
-var delurl = rootUrl + "OrderManage/RentInstrumentDelOrder?random=" + Math.floor(Math.random() * (100000 + 1));//请求地址
-var orderstatuscounturl = rootUrl + "OrderManage/OrderOrderStatusCount?random=" + Math.floor(Math.random() * (100000 + 1));//请求地址
+var detailurl = rootUrl + "OrderManage/AddInstrumentDetailInfo?random=" + Math.floor(Math.random() * (100000 + 1));//请求地址
+var delurl = rootUrl + "OrderManage/AddInstrumentDel?random=" + Math.floor(Math.random() * (100000 + 1));//请求地址
+var checkUrl = rootUrl + "OrderManage/AddInstrumentCheck?random=" + Math.floor(Math.random() * (100000 + 1));//请求地址
 var paystatuscounturl = rootUrl + "OrderManage/OrderPayStatusCount?random=" + Math.floor(Math.random() * (100000 + 1));//请求地址
 var shippstatuscounturl = rootUrl + "OrderManage/OrderShippStatusCount?random=" + Math.floor(Math.random() * (100000 + 1));//请求地址
 var savesendgoodsurl = rootUrl + "OrderManage/SelfHelpSendGoods?random=" + Math.floor(Math.random() * (100000 + 1));//请求地址
@@ -19,6 +19,13 @@ $(document).ready(function () {
     $("#next_pager_list_2").on("click", btnnextpage);
     $("#last_pager_list_2").on("click", btnlastpate);
     $(".backprepage").on("click", backpreinfo);
+    /*********审核设备*******/
+    $(".checkbtn").click(function () {
+        var status = $(this).attr("data-status");
+        var instrumentid = $("#detailorder_instrumentid").val();
+        checkInstrument(instrumentid, status);
+    });
+    /*********审核设备*******/
     //requestOrderStatusAmount('0');//未确认
     //requestOrderStatusAmount('1');//已确认
     //requestOrderStatusAmount('2');//取消
@@ -47,9 +54,9 @@ $(document).ready(function () {
 
     });
     /******
-    ***删除当前自助下单的订单
+    ***删除当前加入仪器设备
     ********/
-    $('.del-thisorderofpcb').on('click', function () {
+    $('.del-thisinstrument').on('click', function () {
 
         var instrumentorderid = GetCheckedValues("instrumentorderid");
         if (instrumentorderid == "" || instrumentorderid == null) {
@@ -101,8 +108,8 @@ function requestInstrumentListData() {
 
 
     var postdata = {};
-    postdata["instrument_num"] = $("#instrument_num").val();
-    postdata["instrument_phone"] = $("#instrument_phone").val();
+    postdata["Instrument_id"] = $("#instrument_num").val();
+    postdata["User_phone"] = $("#instrument_phone").val();
     //postdata["Order_regtime_start"] = $("#order_regtime_start").val();
     //postdata["Order_regtime_end"] = $("#order_regtime_end").val();
   //  postdata["Order_status"] = $("#order_status").val();
@@ -300,7 +307,7 @@ function requestDetailInfo(instrumentorderid) {
     $.ajax({
         type: "post",
         url: detailurl,
-        data: { 'order_id': instrumentorderid},
+        data: { 'instrument_id': instrumentorderid},
         dataType: 'json',
         async: true,//异步
         success: function (data) {
@@ -309,47 +316,69 @@ function requestDetailInfo(instrumentorderid) {
                 return false;
             }
             var jsonRecords = data.servers;
-            var status_text = "";
-            var paystatus_text = "";
-            var shipstatus_text = "";
+            var check_text = "";
+          
+            var borrow_text = "";
+            
             {
-                if (jsonRecords[i]['REV_FLAG'] == '0')
-                    status_text = "审核中";
-                else if (jsonRecords[i]['REV_FLAG'] == '1')
-                    status_text = "审核失败";
-                else if (jsonRecords[i]['REV_FLAG'] == '2')
-                    status_text = "审核成功";
+                if (jsonRecords[0]['REV_FLAG'] == '0')
+                    check_text = "审核中";
+                else if (jsonRecords[0]['REV_FLAG'] == '1')
+                    check_text = "审核失败";
+                else if (jsonRecords[0]['REV_FLAG'] == '2')
+                    check_text = "审核成功";
 
                 else
-                    status_text = "未知";
+                    check_text = "未知";
             }
-            $("#detailorder_num").val(jsonRecords[0]['ORDER_SN']);
-            $("#detailorder_instrumentid").val(jsonRecords[0]['INSTRUMENT_ID']);
-            
-            $("#detailorder_placeorderuser").val(jsonRecords[0]['USER_TEL']);
+            {
+                if (jsonRecords[0]['BOR_FALG'] == '0')
+                    borrow_text = "未租借";
+                else if (jsonRecords[0]['BOR_FALG'] == '1')
+                    borrow_text = "已租借";
+              
 
-            $("#detailorder_instrumentway").val(jsonRecords[0]['INSTRUMENT_WAY']);
+                else
+                    borrow_text = "未知";
+            }
+            $("#detailorder_instrumentid").val(jsonRecords[0]['INSTRUMENT_ID']);
+            $("#detailorder_instrumentname").val(jsonRecords[0]['NAME']);
+            $("#detailorder_placeorderuser").val(jsonRecords[0]['USER_TEL']);
+            
+            var image = domain_name + instrument_image + jsonRecords[0]['INSTRUMENT_PIC'];
+            $("#detailinfo_instrumentimage").attr("src",image);
+            $("#detailorder_instrumenttype").val(jsonRecords[0]['TYPE']);
+
+            $("#detailorder_instrumentbrands").val(jsonRecords[0]['BRANDS']);
+            $("#detailorder_instrumentmodel").val(jsonRecords[0]['MODEL']);
+            $("#detailorder_capability").text(jsonRecords[0]['CAPABILITY']);
+
+            $("#detailorder_isdate").val(jsonRecords[0]['IS_DATE']);
+            $("#detailorder_attribution").val(jsonRecords[0]['ATTRIBUTION']);
+
+            $("#detailorder_company").val(jsonRecords[0]['COMPANY']);
+            var location="";
+          
+            location = jsonRecords[0]['CITY']+ jsonRecords[0]['DISTRICT']+ jsonRecords[0]['STREET'];
+
+            $("#detailorder_location").val(jsonRecords[0]['location']);
+
+            $("#detailorder_usetime").val(jsonRecords[0]['USER_TIME']);
+            $("#detailorder_instrumentway").val(jsonRecords[0]['USER_WAY']);
             $("#detailorder_deposite").val(jsonRecords[0]['DEPOSIT']);
             $("#detailorder_rentfee").val(jsonRecords[0]['FEE']);
+            $("#detailorder_addtime").val(jsonRecords[0]['ADD_TIME']);
+            $("#detailorder_localornot").val(jsonRecords[0]['INSTRUMENT_SUOZAIDI']);
+            $("#detailorder_localfee").val(jsonRecords[0]['INSTRUMENT_SUOZAIDI_FEE']);
 
-            $("#detailorder_usestarttime").val(jsonRecords[0]['BEGIN_TIME']);
-            $("#detailorder_useendtime").val(jsonRecords[0]['END_TIME']);
-
-            $("#detailorder_placeordertime").val(jsonRecords[0]['ADD_TIME']);
-            $("#detailorder_actualmoney").val(jsonRecords[0]['MONEY_PAID']);
-            $("#detailorder_freight").val(jsonRecords[0]['SEND_FEE']);
-            $("#detailorder_orderstatus").val(orderstatus_text);
-            $("#detailorder_paystatus").val(paystatus_text);
-            $("#detailorder_shippingstatus").val(shipstatus_text);
-            $("#detailorder_payway").val(jsonRecords[0]['PAY_NAME']);
-            $("#detailorder_shippingway").val(jsonRecords[0]['SEND_NAME']);
-            $("#detailorder_consignee").val(jsonRecords[0]['CONSIGNEE']);
-
-            $("#detailorder_consigneeaddress").val(jsonRecords[0]['ADDRESS']);
-            $("#detailorder_consigneezipcode").val(jsonRecords[0]['ZIPCODE']);
-            $("#detailorder_consigneemobile").val(jsonRecords[0]['MOBILE']);
+            $("#detailorder_borrowornot").val(jsonRecords[0]['INSTRUMENT_WAIJIE']);
+            $("#detailorder_borrowdeposit").val(jsonRecords[0]['INSTRUMENT_WAIJIE_DEPOSIT']);
+            $("#detailorder_rentfee").val(jsonRecords[0]['INSTRUMENT_WAIJIE_FEE']);
 
 
+            $("#detailorder_turnornot").val(jsonRecords[0]['INSTRUMENT_ZHUANRANG']);
+            $("#detailorder_checkstatus").val(check_text);
+            $("#detailorder_borrowstatus").val(borrow_text);
         }
     });
 }
@@ -362,18 +391,18 @@ function backpreinfo() {
     $(".instrumentofpcbinfo").css("display", "none");
 }
 /*****
-******删除当前订单
+******删除当前仪器设备
 *************/
 function requestDelOrder(instrumentorderid) {
 
     $.ajax({
         type: "post",
         url: delurl,
-        data: { 'order_id': instrumentorderid },
+        data: { 'instrumentorderid': instrumentorderid },
         dataType: 'json',
         async: true,//异步
         success: function (data) {
-            alert(data[0].status);
+            alert(data.status);
 
             window.location.reload();
         }
@@ -541,6 +570,24 @@ function cancelGoodsFun(orderid) {
                 return false;
             else
                 alert("退货成功!");
+            window.location.reload();
+        }
+    });
+}
+/********审核设备*********/
+function checkInstrument(instrumentorderid, status)
+{
+    $.ajax({
+        type: "post",
+        url: checkUrl,
+        data: { instrumentorderid: instrumentorderid, status: status },
+        dataType: 'json',
+        async: true,//异步
+        success: function (data) {
+            if (data.msg != "success")
+                return false;
+            else
+                alert(data.status);
             window.location.reload();
         }
     });

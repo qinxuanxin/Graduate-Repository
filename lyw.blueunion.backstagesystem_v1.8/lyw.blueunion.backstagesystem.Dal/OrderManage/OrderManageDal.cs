@@ -902,5 +902,35 @@ namespace lyw.blueunion.backstagesystem.Dal.OrderManage
            lgdal.setOperationLog(username, log, ip);
            return responseText;
        }
+       /// <summary>
+       /// 获取下单会员信息
+       /// </summary>
+       /// <param name="member_phone"></param>
+       /// <returns></returns>
+       public string getMemberInfo(string member_phone)
+       {
+           string responseText = "";
+           string sql = "";
+           DataTable dt = null;
+       
+           sql  = "select * from GX_FACTORY_USER_VIEW  where USER_TEL='" + member_phone + "'";
+            dt = OracleHelper.GetTable(sql, null);
+            if (dt.Rows.Count > 0)
+            {
+                responseText = JsonHelper.getRecordJson(dt);
+                responseText = "{\"msg\":\"success\",\"status\":\"正确查到数据\",\"servers\":[" + responseText + "]}";
+    
+            }
+            else
+            {
+                sql = "select * from GX_PERSON_USER_VIEW  where USER_TEL='" + member_phone + "'";
+                dt = OracleHelper.GetTable(sql, null);
+                responseText = JsonHelper.getRecordJson(dt);
+                responseText = "{\"msg\":\"success\",\"status\":\"正确查到数据\",\"servers\":[" + responseText + "]}";
+            }
+               //return "[{\"msg\":\"fail\",\"status\":\"查无数据\"}]";
+       
+           return responseText;
+       }
     }
 }

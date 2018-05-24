@@ -189,6 +189,15 @@ namespace lyw.blueunion.backstagesystem.Controllers
             responseText = hbll.requestMoreOperationLog(admin_name, oper_time_start, oper_time_end, nowpage, pagesize);
             return Content(responseText);
         }
+         /// <summary>
+         /// 获取各订单新的数量
+         /// </summary>
+         /// <returns></returns>
+        public ActionResult GetAllNewOrderCount()
+        { 
+        
+        }
+
         /// <summary>
         /// 错误页面
         /// </summary>

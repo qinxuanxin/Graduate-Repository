@@ -360,19 +360,98 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
-                                                        @*<button type="button" class="btn btn-primary save-add-class" @*onclick="upLoadFile()"*@>保存</button>*@
+                                                     
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label">下单用户</label>
+                                            <label class="col-sm-2 control-label">下单会员</label>
 
                                             <div class="col-sm-6">
                                                 <input type="text" disabled class="form-control " id="detailorder_placeorderuser" name="detailorder_placeorderuser">
                                             </div>
                                             <div class="col-sm-4">
-                                                <button type="button" class="btn btn-sm btn-primary"> 获取用户信息</button>
+                                                <button type="button" class="btn btn-sm btn-primary getuserinfo"> 获取会员信息</button>
+                                            </div>
+                                        </div>
+                                        <div class="modal inmodal" id="userinfo" tabindex="-1" role="dialog" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content animated bounceInRight">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal">
+                                                            <span aria-hidden="true">&times;</span><span class="sr-only">关闭</span>
+                                                        </button>
+                                                        @*<i class="fa fa-laptop modal-icon"></i>*@
+                                                        <h4 class="modal-title">会员信息</h4>
+                                                        @*<small class="font-bold">这里可以显示副标题。*@
+                                                    </div>
+                                                    <div class="modal-body">
+
+
+
+                                                        <div class="form-group">
+                                                            <label class="control-label">会员编号</label>
+
+
+                                                            <input type="text" disabled class="form-control " id="detailorder_memberid" name="detailorder_memberid">
+
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class=" control-label">会员手机号</label>
+
+
+                                                            <input type="text" disabled class="form-control " id="detailorder_phone" name="detailorder_phone">
+
+
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class=" control-label">会员类型</label>
+
+
+                                                            <input type="text" disabled class="form-control " id="detailorder_membertype" name="detailorder_membertype">
+
+
+                                                        </div>
+                                                    
+                                                        <div class="form-group personinfo">
+                                                            <label class="control-label">会员昵称</label>
+
+
+                                                            <input type="text" disabled class="form-control " id="detailorder_nickname" name="detailorder_nickname">
+                                                            <label class="control-label">会员姓名</label>
+
+
+                                                            <input type="text" disabled class="form-control " id="detailorder_name" name="detailorder_name">
+
+                                                        </div>
+                                                    
+                                                        <div class="form-group enterinfo">
+                                                            <label class="control-label">会员昵称</label>
+
+
+                                                            <input type="text" disabled class="form-control " id="detailorder_enterpersonnickname" name="detailorder_enterpersonnickname">
+                                                            <label class="control-label">会员姓名</label>
+
+
+                                                            <input type="text" disabled class="form-control " id="detailorder_enterpersonname" name="detailorder_enterpersonname">
+                                                            <label class="control-label">公司名称</label>
+
+
+                                                            <input type="text" disabled class="form-control " id="detailorder_entername" name="detailorder_entername">
+
+                                                        </div>
+                                                       
+                                                      
+                                                     
+
+
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="form-group">

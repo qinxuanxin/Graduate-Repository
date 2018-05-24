@@ -7,7 +7,7 @@ var shippstatuscounturl = rootUrl + "OrderManage/OrderShippStatusCount?random=" 
 var savesendgoodsurl = rootUrl + "OrderManage/SelfHelpSendGoods?random=" + Math.floor(Math.random() * (100000 + 1));//请求地址
 var returngoodsrul = rootUrl + "OrderManage/SelfHelpReturnGoods?random=" + Math.floor(Math.random() * (100000 + 1));//请求地址
 var instrumentdetailurl = rootUrl + "OrderManage/AddInstrumentDetailInfo?random=" + Math.floor(Math.random() * (100000 + 1));//请求地址
-
+var getuserinfourl = rootUrl + "OrderManage/GetMemberInfo?random=" + Math.floor(Math.random() * (100000 + 1));//请求地址
 var count1 = 1;
 var count1max;
 var pagetype = "instrument";
@@ -21,6 +21,7 @@ $(document).ready(function () {
     $("#last_pager_list_2").on("click", btnlastpate);
     $(".backprepage").on("click", backpreinfo);
     $(".getinstrumentinfo").on("click", getinfo);
+    $(".getuserinfo").on("click", getuserinfo);
     //requestOrderStatusAmount('0');//未确认
     //requestOrderStatusAmount('1');//已确认
     //requestOrderStatusAmount('2');//取消
@@ -680,4 +681,55 @@ function getinfo()
 
     $("#instrumentInfo").modal("show");
  
+}
+
+/******
+****获取用户详细信息
+*********/
+function getuserinfo() {
+    var userphone = $("#detailorder_placeorderuser").val();
+    $.ajax({
+        type: "post",
+        url: getuserinfourl,
+        data: { 'member_phone': userphone },
+        dataType: 'json',
+        async: true,//异步
+        success: function (data) {
+            if (data.msg != "success") {
+                alert(data.status);
+                return false;
+            }
+            var jsonRecords = data.servers;
+          
+            $("#detailorder_memberid").val(jsonRecords[0]['USER_ID']);
+            $("#detailorder_phone").val(jsonRecords[0]['USER_TEL']);
+            $("#detailorder_membertype").val(jsonRecords[0]['MEMBER_TYPE']);
+            if (jsonRecords[0]['MEMBER_TYPE'] == "企业会员")
+            {
+                $(".personinfo").css("display", "none");
+                $(".enterinfo").css("display", "block");
+                $("#detailorder_enterpersonnickname").val(jsonRecords[0]['NICK_NAME']);
+                $("#detailorder_enterpersonname").val(jsonRecords[0]['NAME']);
+                $("#detailorder_entername").val(jsonRecords[0]['COMPANY_NAME']);
+            }
+            else if (jsonRecords[0]['MEMBER_TYPE'] == "个人会员") {
+                $(".personinfo").css("display", "block");
+                $(".enterinfo").css("display", "none");
+                $("#detailorder_nickname").val(jsonRecords[0]['NICK_NAME']);
+                $("#detailorder_name").val(jsonRecords[0]['NAME']);
+
+            }
+            else {
+                $(".personinfo").css("display", "none");
+                $(".enterinfo").css("display", "none");
+            }
+              
+               
+         
+
+        }
+    });
+
+    $("#userinfo").modal("show");
+
 }
